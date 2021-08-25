@@ -1,0 +1,99 @@
+.wish-list-panel {
+  height: 100%;
+  max-height: calc(100% - 45px);
+
+  @media (width > 768px) {
+    max-height: calc(100% - 130px);
+  }
+}
+
+.wish-list-panel__title {
+  display: block;
+  font-weight: 700;
+  font-size: var(--font-size-20);
+  line-height: var(--line-height-normal);
+  margin-bottom: 20px;
+
+  @media (width > 768px) {
+    font-size: var(--font-size-40);
+    margin-bottom: 60px;
+  }
+}
+
+.wish-list-panel__close {
+  display: block;
+  border: none;
+  position: absolute;
+  right: 20px;
+  top: 13px;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  margin: 0;
+  border-radius: var(--border-radius-circle);
+  background-color: var(--color-porcelain);
+  background-image: url('/themes/lovata-shopaholic-biolia/assets/img/icon/black-cross.svg');
+  background-size: 12px;
+  background-position: center;
+  background-repeat: no-repeat;
+  cursor: pointer;
+
+  &:hover {
+    box-shadow: var(--shadow-border);
+    transition: box-shadow 0.2s ease-out;
+  }
+
+  &:active,
+  &:focus {
+    box-shadow: var(--shadow-border);
+    background-color: var(--color-mystic);
+  }
+
+  @media (width > 768px) {
+    top: 40px;
+    right: 40px;
+  }
+}
+
+.wish-list-panel__list {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.wish-list-panel__item {
+  display: block;
+  box-sizing: border-box;
+  padding: 10px;
+  border-bottom: 2px solid var(--color-porcelain);
+
+  @media (width > 768px) {
+    padding: 20px 10px;
+  }
+}
+
+.wish-list-panel__item_none_hidden {
+  display: none;
+}
+
+.wish-list-panel__item:first-child {
+  border-top: 2px solid var(--color-porcelain);
+}
+
+.wish-list-panel__restore_visually-hidden {
+  position: absolute;
+  clip: rect(1px, 1px, 1px, 1px);
+  padding: 0;
+  border-width: 0;
+  height: 1px;
+  width: 1px;
+  margin-left: -1px;
+}
+
+.wish-list-panel__restore-btn {
+  padding: 0;
+  border: none;
+  background-color: var(--color-transparent);
+  opacity: 0.5;
+  margin-left: 3px;
+}

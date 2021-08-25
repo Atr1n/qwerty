@@ -1,0 +1,106 @@
+.header {
+  box-sizing: border-box;
+  grid-column: 1 / -1;
+  padding: 13px 20px;
+  min-height: 56px;
+
+  @media (width > 768px) {
+    padding: 21px 0;
+    grid-column: 2 / -2;
+    min-height: 80px;
+  }
+
+  &-wrapper {
+    display: grid;
+  }
+
+  &-item {
+    display: flex;
+    margin-bottom: 1rem;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+
+.header__search {
+  margin-left: auto;
+
+  @media (width > 768px) {
+    margin-right: 23px;
+    margin-left: 0;
+    order: 2;
+  }
+}
+
+
+
+.header__link {
+  display: none;
+  @media (width > 768px) {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    position: relative;
+    height: 40px;
+    padding-right: 22px;
+
+    &::after {
+      content: '';
+      display: block;
+      width: 15px;
+      height: 100%;
+      right: 0;
+      top: 0;
+      position: absolute;
+      background-image: url('/themes/lovata-shopaholic-biolia/assets/img/icon/arrow-black.svg');
+      background-position: right center;
+      background-size: 15px 8px;
+      background-repeat: no-repeat;
+      transform: rotate(180deg);
+    }
+  }
+
+  &:hover {
+    &::after {
+      transform: translateX(3px) rotate(180deg);
+      transition: 0.2s ease-out;
+    }
+  }
+}
+
+.header__link-text {
+  font-weight: 600;
+  font-size: var(--font-size-16);
+  color: var(--color-main);
+  -webkit-transition: all .3s ease-out;
+  -o-transition: all ease-out .3s;
+  transition: all .3s ease-out;
+  text-decoration: none;
+}
+
+.header__seclink {
+  text-decoration: none;
+}
+
+.header-search {
+  position: relative;
+  padding: 5px 20px;
+  border: 1px solid #27348b;
+  border-radius: 25px;
+  font-size: 16px;
+  outline: 0;
+}
+.header-search::after {
+  content: '';
+  display: block;
+  position: absolute;
+  width: 37px;
+  height: 100%;
+  top: 0;
+  right: 10px;
+  background-image: url(/themes/lovata-shopaholic-biolia/assets/img/icon/search.svg);
+  background-position: center;
+  background-size: 15px;
+  background-repeat: no-repeat;
+}

@@ -1,0 +1,16 @@
+<div class="form__textarea {{ wrapperClass }}">
+    <label for="{{ id }}" class="form__textarea-label form__input-label {{ labelClass }}">{{ labelText }}</label>
+    <textarea
+        id="{{ id }}"
+        class="form__textarea-field form__input-field {{ inputClass }}"
+        name="{{ name }}"
+        placeholder="{{ placeholder }}"
+        {{ required }}
+        {% if maxLength is not same as(null) %}
+            maxlength="{{ maxLength }}"
+        {% endif %}
+        {% if minLength is not same as(null) %}
+            minlength="{{ minLength }}"
+        {% endif %}
+    ></textarea>
+</div>

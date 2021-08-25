@@ -1,0 +1,235 @@
+.filter {
+  display: none;
+
+  @media (width > 768px) {
+    box-sizing: border-box;
+    display: block;
+    padding-top: 0;
+  }
+}
+
+@keyframes drawer {
+  from {
+    left: -110%;
+  }
+
+  to {
+    left: 0;
+  }
+}
+
+.filter_open {
+  box-sizing: border-box;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+  width: 100%;
+  max-width: 360px;
+  height: 100%;
+  padding-top: 84px;
+  padding-bottom: 35px;
+  background-color: var(--color-white);
+  animation-name: drawer;
+  animation-duration: 200ms;
+  animation-timing-function: ease-out;
+  animation-fill-mode: forwards;
+  z-index: 100;
+}
+
+.filter__header {
+  padding: 25px 45px;
+
+  @media (width > 768px) {
+    padding: 0;
+    margin-top: 33px;
+    margin-bottom: 60px;
+    background-color: var(--color-white);
+  }
+}
+
+.filter__btn-close {
+  position: absolute;
+  top: 23px;
+  left: 29px;
+  display: block;
+  padding: 0;
+  padding-left: 35px;
+  margin: 0;
+  border: none;
+  color: var(--color-shark);
+  font-size: var(--font-size-22);
+  font-weight: 700;
+  background-color: var(--color-transparent);
+  background-image: url('/themes/lovata-shopaholic-biolia/assets/img/icon/arrow-black.svg');
+  background-size: 19px 11px;
+  background-position: left center;
+  background-repeat: no-repeat;
+
+  @media (width > 768px) {
+    display: none;
+  }
+}
+
+.filter__wrapper {
+  box-sizing: border-box;
+  max-height: 100%;
+  padding-bottom: 45px;
+  overflow: auto;
+
+  @media (width > 768px) {
+    padding-bottom: 0;
+    overflow: hidden;
+  }
+}
+
+.filter__form {
+  box-sizing: border-box;
+  max-height: calc(100% - 86px);
+  padding: 25px 0 0;
+
+  @media (width > 768px) {
+    min-width: 258px;
+    max-height: none;
+    padding: 0 4px;
+  }
+}
+
+.filter__group {
+  box-sizing: border-box;
+  position: relative;
+  max-width: 100%;
+  padding: 0 30px 30px;
+  margin-bottom: 30px;
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: -60px;
+    display: block;
+    width: calc(100% + 60px);
+    height: 1px;
+    background-color: var(--color-mercury);
+  }
+
+  &:nth-last-child(2) {
+    margin-bottom: 0;
+
+    &::after {
+      display: none;
+    }
+  }
+
+  @media (width > 768px) {
+    padding: 0;
+    margin-bottom: 52px;
+
+    &::after {
+      display: none;
+    }
+  }
+}
+
+.filter__group > .filter__radio {
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.filter__checkbox {
+  display: flex;
+  align-items: center;
+}
+
+.filter__group > .filter__checkbox {
+  margin-bottom: 20px;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.filter__group-legend {
+  display: block;
+  margin-bottom: 18px;
+  color: var(--color-shark);
+  font-size: var(--font-size-16);
+  font-weight: 700;
+
+  @media (width > 768px) {
+    margin-bottom: 30px;
+    font-size: var(--font-size-26);
+  }
+}
+
+.filter__checkbox-hint {
+  padding-left: 5px;
+  color: var(--color-primary);
+  font-size: var(--font-size-text-s);
+  font-weight: 600;
+}
+
+.filter__reset {
+  display: none;
+  position: absolute;
+  top: 29px;
+  right: 25px;
+  padding: 0;
+  border: none;
+  color: var(--color-shuttle-gray);
+  font-size: var(--font-size-16);
+  background-color: var(--color-transparent);
+
+  &_visible {
+    display: block;
+  }
+
+  @media (width > 768px) {
+    position: static;
+    width: 100%;
+    height: 44px;
+    border: 2px solid var(--color-iron);
+    border-radius: var(--border-radius-50);
+
+    &:hover {
+      transition: opacity 0.2s ease-out;
+      cursor: pointer;
+      opacity: 1;
+    }
+  }
+}
+
+.filter__reset-text {
+  position: relative;
+  padding-left: 22px;
+  color: inherit;
+  font-weight: 500;
+  background-image: url('/themes/lovata-shopaholic-biolia/assets/img/icon/dark-cross.svg');
+  background-size: 8px;
+  background-position: left center;
+  background-repeat: no-repeat;
+}
+
+.filter__btn-section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+
+  @media (width > 768px) {
+    padding-top: 30px;
+    margin-top: 30px;
+    border-top: 2px solid var(--color-iron);
+  }
+}
+
+.filter__submit {
+  box-sizing: border-box;
+  width: calc(100% - 60px);
+  min-width: 120px;
+
+  @media (width > 768px) {
+    display: none;
+  }
+}

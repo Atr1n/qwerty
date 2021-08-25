@@ -1,0 +1,8 @@
+<div class="filter-checked">
+    <ul class="filter-checked__list">
+        {% for i in 0..2 %}
+            {% partial 'product/catalog/filter-bar/filter-checked/filter-checked-item' %}
+        {% endfor %}
+    </ul>
+    <button type="button" class="filter-checked__reset">Clear all</button>
+</div>

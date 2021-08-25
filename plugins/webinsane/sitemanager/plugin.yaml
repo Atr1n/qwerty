@@ -1,0 +1,24 @@
+plugin:
+    name: 'webinsane.sitemanager::lang.plugin.name'
+    description: 'webinsane.sitemanager::lang.plugin.description'
+    author: Webinsane
+    icon: oc-icon-apple
+    homepage: ''
+navigation:
+    main-menu-item:
+        label: 'Управление сайтом'
+        url: webinsane/sitemanager/benefit
+        icon: icon-life-ring
+        sideMenu:
+            side-menu-item:
+                label: Преимущества
+                url: webinsane/sitemanager/benefit
+                icon: icon-thumbs-up
+            side-menu-item2:
+                label: Партнеры
+                url: webinsane/sitemanager/partner
+                icon: icon-wordpress
+            side-menu-item3:
+                label: Отзывы
+                url: webinsane/sitemanager/review
+                icon: icon-smile-o

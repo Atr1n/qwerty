@@ -1,0 +1,150 @@
+.about-us {
+  grid-column: 2 / -2;
+  padding: 0 20px;
+  margin-bottom: 50px;
+
+  @media (width > 768px) {
+    padding: 0;
+    margin-bottom: 110px;
+  }
+}
+
+.about-us__card {
+  box-sizing: border-box;
+  position: relative;
+  padding-top: 20px;
+  padding-right: 15px;
+  padding-bottom: 20px;
+  padding-left: 80px;
+  margin-bottom: 16px;
+  border: 2px solid var(--color-iron);
+  border-radius: var(--border-radius-20);
+  background-size: 75px;
+  background-repeat: no-repeat;
+  background-position: 0 center;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  @media (width > 768px) {
+    min-height: 120px;
+    padding-top: 28px;
+    padding-right: 38px;
+    padding-bottom: 28px;
+    padding-left: 125px;
+    background-size: 95px;
+    background-position: 13px center;
+
+    &:hover:not(&_big) {
+      cursor: pointer;
+      box-shadow: var(--shadow-black);
+      transition: box-shadow 0.2s ease-out;
+    }
+  }
+}
+
+.about-us__card_big {
+  display: grid;
+  grid-template-areas: 'IMG INFO';
+  padding-left: 15px;
+  grid-gap: 5px;
+  height: 100%;
+
+  @media (width > 768px) {
+    grid-template-areas: 'INFO IMG';
+    padding-left: 55px;
+  }
+}
+
+.about-us__card-info {
+  grid-area: INFO;
+}
+
+.about-us__logo {
+  display: block;
+  flex-basis: 100%;
+  width: auto;
+  height: 30px;
+  margin-top: 7px;
+  margin-bottom: 10px;
+
+  @media (width > 768px) {
+    height: 40px;
+    margin-bottom: 25px;
+  }
+}
+
+.about-us__descr {
+  margin: 0;
+  color: var(--color-shuttle-gray);
+  font-size: var(--font-size-14);
+  line-height: var(--line-height-25);
+  font-weight: 500;
+
+  @media (width > 768px) {
+    font-size: var(--font-size-16);
+  }
+}
+
+.about-us__link {
+  position: relative;
+  display: inline-block;
+  padding-right: 25px;
+  margin-top: 20px;
+  color: var(--color-shark);
+  font-size: var(--font-size-14);
+  font-weight: 700;
+  text-decoration: none;
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: block;
+    width: 16px;
+    height: 100%;
+    background-image: url('/themes/lovata-shopaholic-biolia/assets/img/icon/arrow-grey.svg');
+    background-size: 17px;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  @media (width > 768px) {
+    font-size: var(--font-size-16);
+
+    &:hover {
+      &::after {
+        transition: transform 0.2s ease-out;
+        transform: translate(3px);
+      }
+    }
+  }
+}
+
+.about-us__card__block-link {
+  display: block;
+  text-decoration: none;
+}
+
+.about-us__wrapper {
+
+  @media (width > 768px) {
+    display: grid;
+    grid-template-columns: 650px 1fr;
+    grid-column-gap: 50px;
+  }
+}
+
+.about-us__heading {
+  display: inline-block;
+  font-size: var(--font-size-18);
+  font-weight: 700;
+  color: var(--color-shark);
+
+  @media (width > 768px) {
+    margin-top: 7px;
+    font-size: var(--font-size-20);
+  }
+}

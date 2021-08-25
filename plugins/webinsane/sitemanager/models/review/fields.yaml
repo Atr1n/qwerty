@@ -1,0 +1,14 @@
+fields:
+    name:
+        label: Имя
+        span: auto
+        type: text
+    text:
+        label: Текст
+        span: auto
+        type: text
+    photo:
+        label: Фотография
+        mode: image
+        span: auto
+        type: mediafinder

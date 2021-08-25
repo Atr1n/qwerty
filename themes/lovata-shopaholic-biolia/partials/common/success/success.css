@@ -1,0 +1,22 @@
+.success__page {
+  grid-column: 4 / -4;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.success__title {
+  margin-top: 0;
+}
+
+.success__note {
+  margin-bottom: 50px;
+  margin-top: 0;
+}
+
+.success__btn {
+  width: 100%;
+  max-width: 300px;
+}

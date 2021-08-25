@@ -1,0 +1,29 @@
+title = "Article page"
+url = "/news/:article"
+layout = "main"
+is_hidden = 0
+
+[ArticlePage]
+slug = "{{ :article }}"
+slug_required = 1
+skip_error = 0
+
+[ArticleList]
+sorting = "publish|desc"
+==
+<?php
+function onStart()
+{
+    $this['path_page_css'] = mix('css/news-page.css', 'themes/lovata-shopaholic-biolia/assets');
+}
+?>
+==
+{% put styles %}
+    <link rel="stylesheet" href="{{ path_page_css }}">
+{% endput %}
+{% set obArticle = ArticlePage.get() %}
+{% partial 'article/news-page/news-page' obArticle=obArticle arSEOParams=arSEOParams %}
+{% set arSEOParams = {'article': obArticle} %}
+{% put seo_tags %}
+    {% component 'SeoToolbox' model=obArticle params=arSEOParams %}
+{% endput %}

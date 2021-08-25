@@ -1,0 +1,8 @@
+{
+    "name": "lovata/compareshopaholic-plugin",
+    "type": "october-plugin",
+    "description": "Adds the ability to add products to the compare",
+    "require": {
+        "composer/installers": "~1.0"
+    }
+}

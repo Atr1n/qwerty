@@ -1,0 +1,67 @@
+<div class="modals">
+		<div class="modal-overlay">
+			<div class="modal" data-target="form-popup">
+				<div class="modal-tabs">
+					<div id="signIn" class="modal-tabs-item modal-active-1">
+						<h3>Регистрация</h3>
+					</div>
+					<div id="signUp" class="modal-tabs-item">
+						<h3>Вход</h3>
+					</div>
+				</div>
+				<form role="form" action="#" method="post" class="form modal-1">
+					<div class="form-wrapper">
+						<div class="form-wrapper__links">
+							<div class="form-wrapper__link">
+								<a href="#"><img src="{{'assets/img/modals/google.svg'|theme}}" alt="Войти через google" width="100"></a>
+							</div>
+							<div class="form-wrapper__link">
+								<a href="#"><img src="{{'assets/img/modals/facebook.svg'|theme}}" alt="Войти через facebook" width="100"></a>
+							</div>
+							<div class="form-wrapper__link">
+								<p>Или</p>
+								<img class="form-wrapper__img" src="{{'assets/img/modals/arrow.svg'|theme}}" alt="Войти через facebook" width="50">
+							</div>
+						</div>
+						<input name="name" type="name" placeholder="Имя..." required>
+						<input name="email" type="email" placeholder="Почта..." required>
+						<input name="phone" id="phone" type="phone" class="phone" placeholder="Мобильный телефон..." required>
+						<input name="password" type="password" class="password" placeholder="Пароль..." required>
+						<div class="modal-checkbox">
+							<label for="checkbox">
+								<input id="checkbox" name="checkbox" type="checkbox" class="checkbox" required>
+								<p>Я подтверждаю, что ознакомлен и согласен с условиями <a href="#">Политики конфиденциальности</a></p>
+							</label>
+						</div>
+						<div class="form-wrapper__btn">
+							<button name="submit" type="submit" class="form-wrapper-submit">Регистрация</button>
+						</div>
+					</div>
+				</form>
+				<form role="form" action="#" method="post" class="form modal-2">
+					<div class="form-wrapper">
+						<div class="form-wrapper__links">
+							<div class="form-wrapper__link">
+								<a href="#"><img src="{{'assets/img/modals/google.svg'|theme}}" alt="Войти через google" width="100"></a>
+							</div>
+							<div class="form-wrapper__link">
+								<a href="#"><img src="{{'assets/img/modals/facebook.svg'|theme}}" alt="Войти через facebook" width="100"></a>
+							</div>
+							<div class="form-wrapper__link">
+								<p>Или</p>
+								<img class="form-wrapper__img" src="{{'assets/img/modals/arrow.svg'|theme}}" alt="Войти через facebook" width="50">
+							</div>
+						</div>
+						<input name="name" type="name" placeholder="Имя..." required>
+						<input name="email" type="email" placeholder="Почта..." required>
+						<div class="modal-pass">
+							<a href="#">Забыли пароль?</a>
+						</div>
+						<div class="form-wrapper__btn">
+							<button	button name="submit" type="submit" class="form-wrapper-submit">Вход</button>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>

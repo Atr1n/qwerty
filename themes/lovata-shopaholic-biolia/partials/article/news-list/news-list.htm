@@ -1,0 +1,23 @@
+{% set obArticleList = ArticleList.make().sort('publish|desc').published() %}
+{% set iPage = Pagination.getPageFromRequest() %}
+{% set arArticleList = obArticleList.page(iPage, Pagination.getCountPerPage()) %}
+{% set iMaxPage = Pagination.getMaxPage(obArticleList.count()) %}
+{% set arPaginationList = Pagination.get(iPage, obArticleList.count()) %}
+<h1 class="page-title">{{ sPageTitle }}</h1>
+<ul class="news-list">
+    {% for obArticle in arArticleList %}
+    <li class="news-list__item">
+        {% partial 'article/article-card/article-card'
+            obArticle=obArticle
+            sWidth=260
+            sHeight=164
+        %}
+    </li>
+    {% endfor %}
+</ul>
+{% partial 'navigation/pagination/pagination'
+    wrapperClass = 'news-pagination'
+    arPaginationList=arPaginationList
+    iMaxPage=iMaxPage
+    iPage=iPage
+%}

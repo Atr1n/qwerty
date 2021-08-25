@@ -1,0 +1,33 @@
+{% set obCategoryList = CategoryList.make().tree() %}
+<section class="category">
+     <b class="category__title">Категории</b>
+    <button type="button" class="category__btn-close js-category-bar" aria-label="Close Category Panel">
+        <span>Category</span>
+    </button>
+    {% if obCategoryList.isNotEmpty() %}
+        <ul class="category__list">
+            {% for obCategory in obCategoryList %}
+                {% if obCategory.product_count > 0 %}
+                    <li class="category__item" style="background-image: url({{ obCategory.preview_image.getThumb(100, 100, {'quality': 100}) }})">
+                        {% if obActiveCategory.id != obCategory.id %}
+                        <a href="{{ obCategory.getPageUrl('catalog') }}" class="category__link">
+                            <span class="category__name">{{ obCategory.name }}</span>
+                            <span class="category__number">{{ obCategory.product_count }}</span>
+                        </a>
+                        {% else %}
+                        <span class="category__link {% if obActiveCategory.id == obCategory.id %}category__link_current{% endif %}">
+                            <span class="category__name">{{ obCategory.name }}</span>
+                            <span class="category__number">{{ obCategory.product_count }}</span>
+                        </span>
+                        {% endif %}
+                        <!-- <a {% if obActiveCategory.id != obCategory.id %}href="{{ obCategory.getPageUrl('catalog') }}"{% endif %}
+                           class="category__link {% if obActiveCategory.id == obCategory.id %}category__link_current{% endif %}">
+                            <span class="category__name">{{ obCategory.name }}</span>
+                            <span class="category__number">{{ obCategory.product_count }}</span>
+                        </a> -->
+                    </li>
+                {% endif %}
+            {% endfor %}
+        </ul>
+    {% endif %}
+</section>

@@ -1,0 +1,212 @@
+.cart-product {
+  display: grid;
+  grid-template-areas:
+    'INFO REMOVE'
+    'CART CART';
+
+  @media (width > 768px) {
+    grid-template-areas: 'INFO CART REMOVE';
+    grid-template-columns: 1fr auto auto;
+    height: 96px;
+  }
+}
+
+.cart-product__info {
+  display: grid;
+  grid-area: INFO;
+  grid-template-columns: 65px auto;
+  grid-template-areas:
+    'IMG TITLE'
+    'IMG PRICE';
+
+  @media (width > 768px) {
+    grid-template-columns: 125px auto;
+  }
+}
+
+.cart-product__link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  height: 100%;
+  grid-area: IMG;
+  font-size: var(--font-size-0);
+  margin-right: 10px;
+}
+
+.cart-product__img {
+  height: 100%;
+  max-height: 55px;
+  width: 55px;
+  object-fit: contain;
+
+  @media (width > 768px) {
+    height: 100%;
+    max-height: 76px;
+    width: 76px;
+  }
+}
+
+.cart-product__title {
+  grid-area: TITLE;
+  align-self: end;
+  font-weight: 700;
+  color: var(--color-black);
+  text-decoration: none;
+  font-size: var(--font-size-16);
+  line-height: var(--line-height-20);
+  padding-bottom: 8px;
+
+  @media (width > 768px) {
+    line-height: var(--line-height-25);
+  }
+}
+
+.cart-product__params {
+  grid-area: PRICE;
+  align-self: start;
+  display: flex;
+  align-items: flex-end;
+  color: var(--color-shuttle-gray);
+  font-weight: 700;
+  font-size: var(--font-size-14);
+  line-height: var(--line-height-20);
+}
+
+.cart-product__params-price {
+  font-size: var(--font-size-16);
+
+  &_old {
+    text-decoration: line-through;
+    margin-left: 5px;
+  }
+}
+
+.cart-product__params-currency {
+  display: inline-block;
+  font-size: var(--font-size-16);
+}
+
+.cart-product__cart-info {
+  grid-area: CART;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 10px;
+  padding-left: 65px;
+
+  @media (width > 768px) {
+    padding-top: 0;
+    padding-left: 0;
+  }
+}
+
+.cart-product__quantity {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.cart-product__quantity-input {
+  appearance: textfield;
+  background-color: var(--color-transparent);
+  border: none;
+  max-width: 30px;
+  text-align: center;
+  font-size: var(--font-size-16);
+  font-weight: 700;
+  color: var(--color-black);
+
+  @media (width > 768px) {
+    max-width: 40px;
+    font-size: var(--font-size-20);
+  }
+}
+
+.cart-product__quantity-input::-webkit-outer-spin-button,
+.cart-product__quantity-input::-webkit-inner-spin-button {
+  appearance: none;
+  margin: 0;
+}
+
+.cart-product__change-btn {
+  appearance: none;
+  border: none;
+  box-shadow: none;
+  width: 35px;
+  height: 35px;
+  border-radius: var(--border-radius-circle);
+  background-color: var(--color-porcelain);
+  font-size: var(--font-size-16);
+  font-weight: 700;
+  color: var(--color-shark);
+  padding: 0 8px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: var(--color-iron);
+  }
+
+  &:active {
+    background-color: var(--color-submarine);
+  }
+
+  &:disabled {
+    color: var(--color-iron);
+    cursor: default;
+
+    &:hover {
+      background-color: var(--color-porcelain);
+    }
+
+    &:active {
+      background-color: var(--color-porcelain);
+    }
+  }
+
+  @media (width > 768px) {
+    width: 28px;
+    height: 28px;
+  }
+}
+
+.cart-product__price {
+  font-size: var(--font-size-16);
+  font-weight: 700;
+  margin-left: 20px;
+  text-align: right;
+  display: flex;
+  justify-content: center;
+
+  @media (width > 768px) {
+    width: 230px;
+    text-align: center;
+    font-size: var(--font-size-20);
+  }
+}
+
+.cart-product__price-value {
+  &_old {
+    text-decoration: line-through;
+    margin-left: 5px;
+    color: var(--color-shuttle-gray);
+  }
+}
+
+.cart-product__remove {
+  grid-area: REMOVE;
+  align-self: center;
+  justify-self: end;
+  border: none;
+  box-shadow: none;
+  width: 20px;
+  height: 20px;
+  padding: 0;
+  margin: 0;
+  background-color: var(--color-transparent);
+  background-image: url('/themes/lovata-shopaholic-biolia/assets/img/icon/cross.svg');
+  background-size: 14px 14px;
+  background-position: center;
+  background-repeat: no-repeat;
+}

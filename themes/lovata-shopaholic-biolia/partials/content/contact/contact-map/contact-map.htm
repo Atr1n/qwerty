@@ -1,0 +1,9 @@
+{% if this.theme.map_active|default('1') %}
+    <div class="contact__map-wrapper">
+        <div class="map contact__map"
+             data-api-key="{{ this.theme.map_api_key|default('AIzaSyDCHRGhNQKIoe0jeC8qEHTTcbAeSZgzd_4') }}"
+             data-coordinates="{{ this.theme.map_lat|default('0') }},{{ this.theme.map_lng|default('0') }}"
+             data-marker-path="{{ 'assets/img/icon/marker.png'|theme }}" >
+        </div>
+    </div>
+{% endif %}

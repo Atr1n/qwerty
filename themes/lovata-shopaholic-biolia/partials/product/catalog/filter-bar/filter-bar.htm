@@ -1,0 +1,21 @@
+{% set iFilterCount = arFilterValue|length + arFilterBrandIDList|length %}
+{% if fMinPriceFilterValue > 0 or fMaxPriceFilterValue > 0 %}
+    {% set iFilterCount = iFilterCount + 1 %}
+{% endif %}
+
+<button type="button" class="filter-bar__filter-btn filter-bar__filter-btn js-category-bar" aria-label="Open Category panel">
+    <span class="filter-bar__filter-text filter-bar__filter-text_category" aria-hidden="true">Category</span>
+</button>
+<button type="button" class="filter-bar__filter-btn js-filter-bar" aria-label="Open Filter Panel.2 filters were checked">
+    <span class="filter-bar__filter-text" aria-hidden="true">Filter</span>&nbsp;
+    <span class="filter-bar__filter-counter" aria-hidden="true">({{ iFilterCount }})</span>
+</button>
+<div class="filter-bar__sort">
+    <label for="sortby" class="visually-hidden">Sort by</label>
+    <select class="select filter-bar__select _shopaholic-sorting" id="sortby" name="sort">
+        <option value="popularity|desc" {{ (sActiveSorting == 'popularity|desc' or sActiveSorting is empty) ? 'selected' : '' }}>Popular</option>
+        <option value="price|desc" {{ sActiveSorting == 'price|desc' ? 'selected' : '' }}>Expensive</option>
+        <option value="price|asc" {{ sActiveSorting == 'price|asc' ? 'selected' : '' }}>Cheap</option>
+        <option value="new" {{ sActiveSorting == 'new' ? 'selected' : '' }}>New</option>
+    </select>
+</div>

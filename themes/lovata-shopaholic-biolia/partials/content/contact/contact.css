@@ -1,0 +1,21 @@
+.contact {
+  grid-column: 3 / -3;
+
+  @media (width > 768px) {
+    grid-column: 2 / -2;
+  }
+}
+
+.contact__breadcrumbs {
+  grid-column: 3 / -3;
+  padding-bottom: 20px;
+
+  @media (width > 768px) {
+    grid-column: 2 / -2;
+    padding-top: 50px;
+  }
+}
+
+.contact__page-title {
+  grid-column: 1 / -1;
+}

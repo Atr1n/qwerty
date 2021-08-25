@@ -1,0 +1,10 @@
+fields:
+    logo:
+        label: Логотип
+        mode: image
+        span: auto
+        type: mediafinder
+    url:
+        label: Ссылка
+        span: auto
+        type: text

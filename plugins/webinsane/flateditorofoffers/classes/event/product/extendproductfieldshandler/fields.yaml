@@ -1,0 +1,62 @@
+fields:
+    active:
+        label: 'lovata.toolbox::lang.field.active'
+        span: full
+        default: 0
+        type: switch
+    name:
+        label: 'lovata.toolbox::lang.field.name'
+        span: storm
+        cssClass: col-md-3
+        required: 1
+        type: text
+    quantity:
+        label: 'lovata.shopaholic::lang.field.quantity'
+        span: storm
+        cssClass: col-md-1
+        type: number
+        default: 0
+    price_value:
+        label: 'lovata.shopaholic::lang.field.price'
+        span: storm
+        cssClass: col-md-1
+        type: number
+    old_price_value:
+        label: 'lovata.shopaholic::lang.field.old_price'
+        span: storm
+        cssClass: col-md-1
+        type: number
+    weight:
+        label: 'lovata.toolbox::lang.field.weight'
+        span: storm
+        cssClass: col-md-1
+        type: number
+    length:
+        label: 'lovata.toolbox::lang.field.length'
+        span: storm
+        cssClass: col-md-1
+        type: number
+    width:
+        label: 'lovata.toolbox::lang.field.width'
+        span: storm
+        cssClass: col-md-1
+        type: number
+    height:
+        label: 'lovata.toolbox::lang.field.height'
+        span: storm
+        cssClass: col-md-1
+        type: number
+    code:
+        label: 'lovata.shopaholic::lang.field.vendor_code'
+        span: storm
+        cssClass: col-md-1
+        type: text
+    external_id:
+        label: 'lovata.toolbox::lang.field.external_id'
+        span: storm
+        cssClass: col-md-1
+        type: text
+
+
+
+

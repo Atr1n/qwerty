@@ -1,0 +1,10 @@
+name: Review
+form: $/webinsane/sitemanager/models/review/fields.yaml
+modelClass: Webinsane\Sitemanager\Models\Review
+defaultRedirect: webinsane/sitemanager/review
+create:
+    redirect: 'webinsane/sitemanager/review/update/:id'
+    redirectClose: webinsane/sitemanager/review
+update:
+    redirect: webinsane/sitemanager/review
+    redirectClose: webinsane/sitemanager/review

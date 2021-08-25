@@ -1,0 +1,39 @@
+items:
+    -
+        title: Catalog
+        nesting: ''
+        type: cms-page
+        url: ''
+        code: catalog
+        reference: catalog
+        cmsPage: ''
+        replace: ''
+        viewBag:
+            isHidden: '0'
+            cssClass: ''
+            isExternal: '0'
+    -
+        title: 'About us'
+        nesting: '0'
+        type: static-page
+        code: ''
+        reference: about
+        replace: '0'
+        viewBag:
+            isHidden: '0'
+            cssClass: ''
+            isExternal: '0'
+    -
+        title: News
+        nesting: ''
+        type: cms-page
+        url: ''
+        code: ''
+        reference: news-list
+        cmsPage: ''
+        replace: ''
+        viewBag:
+            isHidden: '0'
+            cssClass: ''
+            isExternal: '0'
+name: 'Side menu'

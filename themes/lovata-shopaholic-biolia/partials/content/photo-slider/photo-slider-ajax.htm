@@ -1,0 +1,19 @@
+{% if arInstagramFeedData is not empty %}
+    <h2 class="section-title photo-slider__title section-title_center">Our Instagram</h2>
+    <div class="photo-slider__container swiper-container">
+        <ul class="photo-slider__wrapper swiper-wrapper">
+            {% for arMedia in arInstagramFeedData if arMedia.media_url is not empty and arMedia.media_type == 'IMAGE' %}
+                <li class="photo-slider__item swiper-slide">
+                    <a href="{{ arMedia.permalink }}" target="_blank" class="photo-slider__img-wrapper">
+                        <img class="photo-slider__img js-lazy-load" src="{{ arMedia.media_url }}" alt="{{ arMedia.description }}">
+                    </a>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+    <div class="photo-slider__pagination-wrap">
+        <button class="photo-slider__button photo-slider__button_prev"></button>
+        <div class="photo-slider__pagination"></div>
+        <button class="photo-slider__button photo-slider__button_next"></button>
+    </div>
+{% endif %}

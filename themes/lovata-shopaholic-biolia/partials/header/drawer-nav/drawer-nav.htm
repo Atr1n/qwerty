@@ -1,0 +1,35 @@
+{% set obCategoryList = CategoryList.make().tree() %}
+<button type="button" class="drawer-nav__btn" aria-label="Open sidebar menu">
+    <span class="drawer-nav__btn-text">Категории</span>
+</button>
+<nav class="drawer-nav" aria-label="Sidebar navigation">
+    <div class="drawer-nav__menu-wrap">
+        <span class="drawer-nav__title">Категории</span>
+        <button class="drawer-nav__close" aria-label="Close menu sidebar"></button>
+    </div>
+    <ul class="drawer-nav__wrapper drawer-nav__wrapper_hidden custom-scroll">
+        {% for arItem in SideMenuLeft.menuItems if not arItem.viewBag.isHidden %}
+            {% if arItem.code == 'catalog' and obCategoryList.isNotEmpty() %}
+                <li class="drawer-nav__item">
+                    <a href="{{ 'catalog'|page({'category': false}) }}" class="drawer-nav__item-link">Каталог</a>
+                    <button class="drawer-nav__item-btn" aria-label="Show More">
+                        <span class="drawer-nav__item-icon" aria-hidden="true">+</span>
+                    </button>
+                    <ul class="drawer-nav__sublist">
+                        {% for obCategory in obCategoryList %}
+                            <li class="drawer-nav__subitem">
+                                <a href="{{ obCategory.getPageUrl('catalog') }}" class="drawer-nav__subitem-link">
+                                    {{ obCategory.name }}
+                                </a>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </li>
+            {% else %}
+                <li class="drawer-nav__item">
+                    <a href="{{ arItem.url }}" class="drawer-nav__item-link">{{ arItem.title }}</a>
+                </li>
+            {% endif %}
+        {% endfor %}
+    </ul>
+</nav>

@@ -1,0 +1,20 @@
+{# TODO: Remove defaults #}
+{% set sTitle              = this.theme.map_popup_title|default('Biolia office') %}
+{% set sAddressValue       = this.theme.address|default('Belarus, Minsk city, Verie Horuzhey str, 25-4')  %}
+{% set sAddressDescription = this.theme.address_description|default('Our office is available 24/7')%}
+{% set sPhoneValue         = this.theme.phone|default('+1 (212) 966-6457') %}
+
+<div class="map-popup contact__popup">
+    {% if sTitle is not empty %}
+        <h3 class="map-popup__title">{{ sTitle }}</h3>
+    {% endif %}
+    {% if sAddressValue is not empty %}
+        <span class="map-popup__info map-popup__info_address">{{ sAddressValue }}</span>
+    {% endif %}
+    {% if sAddressDescription is not empty %}
+        <span class="map-popup__info map-popup__info_working-hours">{{ sAddressDescription }}</span>
+    {% endif %}
+    {% if sPhoneValue is not empty %}
+        <span class="map-popup__info map-popup__info_tel">{{ sPhoneValue }}</span>
+    {% endif %}
+</div>

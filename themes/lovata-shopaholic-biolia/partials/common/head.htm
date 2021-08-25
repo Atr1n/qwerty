@@ -1,0 +1,21 @@
+{{ SeoToolbox.getHeadBegin()|raw }}
+{% placeholder seo_tags default %}
+    {% component 'SeoToolbox' %}
+{% endplaceholder %}
+<meta charset="utf-8">
+{% if this.theme.favicon_32 is not empty %}
+    <link rel="icon" type="image/png" href="{{ this.theme.favicon_32|media }}" sizes="32x32">
+{% endif %}
+{% if this.theme.favicon_64 is not empty %}
+    <link rel="icon" type="image/png" href="{{ this.theme.favicon_64|media }}" sizes="64x64">
+{% endif %}
+{% if this.theme.favicon_180 is not empty %}
+    <link rel="apple-touch-icon" type="image/png" href="{{ this.theme.favicon_180|media }}" sizes="64x64">
+{% endif %}
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="stylesheet" href="{{ path_css }}">
+{% styles %}
+<link rel="preload" href="/themes/lovata-shopaholic-biolia/assets/fonts/quicksand-v8-latin-700.woff2" as="font" crossorigin>
+<link rel="preload" href="/themes/lovata-shopaholic-biolia/assets/fonts/quicksand-v8-latin-500.woff2" as="font" crossorigin>
+<link rel="preload" href="/themes/lovata-shopaholic-biolia/assets/fonts/quicksand-v8-latin-regular.woff2" as="font" crossorigin>
+{{ SeoToolbox.getHeadEnd()|raw }}

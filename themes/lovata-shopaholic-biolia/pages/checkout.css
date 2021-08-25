@@ -1,0 +1,3 @@
+@import '../partials/product/cart/cart';
+@import '../partials/product/cart/cart-delivery/cart-delivery';
+@import '../partials/product/cart/cart-payment/cart-payment';

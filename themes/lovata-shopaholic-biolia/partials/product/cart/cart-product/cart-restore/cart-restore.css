@@ -1,0 +1,28 @@
+.cart-restore {
+  display: none;
+}
+
+.cart-restore__content {
+  height: 96px;
+  display: flex;
+  align-items: center;
+}
+
+.cart-restore__text {
+  color: var(--color-shuttle-gray);
+  font-size: var(--font-size-14);
+  font-weight: 500;
+
+  @media (width > 768px) {
+    font-size: var(--font-size-16);
+  }
+}
+
+.cart-restore__product-name {
+  color: var(--color-shark);
+}
+
+.cart-restore__button {
+  margin-left: 20px;
+  height: 35px;
+}

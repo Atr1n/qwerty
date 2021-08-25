@@ -1,0 +1,10 @@
+name: Benefit
+form: $/webinsane/sitemanager/models/benefit/fields.yaml
+modelClass: Webinsane\Sitemanager\Models\Benefit
+defaultRedirect: webinsane/sitemanager/benefit
+create:
+    redirect: 'webinsane/sitemanager/benefit/update/:id'
+    redirectClose: webinsane/sitemanager/benefit
+update:
+    redirect: webinsane/sitemanager/benefit
+    redirectClose: webinsane/sitemanager/benefit

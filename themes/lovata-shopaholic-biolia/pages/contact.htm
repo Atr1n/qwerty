@@ -1,0 +1,29 @@
+title = "Contact"
+url = "/contact"
+layout = "main"
+is_hidden = 0
+
+==
+<?php
+function onStart()
+{
+    $this['path_page_js'] = mix('js/contact.js', 'themes/lovata-shopaholic-biolia/assets');
+    $this['path_page_css'] = mix('css/contact.css', 'themes/lovata-shopaholic-biolia/assets');
+}
+?>
+==
+{% put styles %}
+    <link rel="stylesheet" href="{{ path_page_css }}">
+{% endput %}
+{% put scripts %}
+    <script src="{{ path_page_js }}"></script>
+{% endput %}
+
+{% set sPageTitle = SeoToolbox.getPageTitle()|default('Contact') %}
+
+{% set arBreadcrumbs = [
+    {'active': true, 'name': sPageTitle }
+] %}
+
+{% partial 'navigation/breadcrumbs/breadcrumbs' wrapperClass='contact__breadcrumbs' arBreadcrumbs=arBreadcrumbs  %}
+{% partial 'content/contact/contact' sPageTitle=sPageTitle %}

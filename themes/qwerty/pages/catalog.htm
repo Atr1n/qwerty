@@ -1,0 +1,20 @@
+url = "/catalog"
+layout = "default"
+title = "catalog"
+==
+<section class="catalog">
+		<div class="container">
+			<div class="catalog-content">
+				{% for i in 1..12 %} 
+				<a class="catalog-item" href="#">
+					<div class="catalog-item__img">
+						<img src="{{'assets/img/product-icons/смартфоны.svg'|theme}}" width="25" alt="Смартфоны">
+					</div>
+					<div class="catalog-item__text">
+						<p>Смартфоны и гаджеты</p>
+					</div>
+				</a>
+				{% endfor %}
+			</div>
+		</div>
+	</section>

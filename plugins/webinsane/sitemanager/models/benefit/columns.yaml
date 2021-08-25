@@ -1,0 +1,16 @@
+columns:
+    id:
+        label: id
+        type: number
+    title:
+        label: title
+        type: text
+    text:
+        label: text
+        type: text
+    image:
+        label: image
+        type: text
+    sort_order:
+        label: sort_order
+        type: number

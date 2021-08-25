@@ -1,0 +1,237 @@
+.category {
+  display: none;
+
+  @media (width > 768px) {
+    box-sizing: border-box;
+    display: block;
+    padding-top: 0;
+    margin-bottom: 52px;
+  }
+}
+
+.category__title {
+  display: none;
+
+  @media (width > 768px) {
+    display: block;
+    margin-bottom: 35px;
+    color: var(--color-shark);
+    font-size: var(--font-size-28);
+    font-weight: 700;
+  }
+}
+
+@keyframes category-drawer {
+  from {
+    left: -110%;
+  }
+
+  to {
+    left: 0;
+  }
+}
+
+.category_open {
+  box-sizing: border-box;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+  width: 100%;
+  max-width: 360px;
+  height: 100%;
+  padding-top: 60px;
+  padding-bottom: 35px;
+  background-color: var(--color-white);
+  animation-name: category-drawer;
+  animation-duration: 200ms;
+  animation-timing-function: ease-out;
+  animation-fill-mode: forwards;
+  z-index: 100;
+}
+
+.category__btn-close {
+  position: absolute;
+  top: 23px;
+  left: 29px;
+  display: block;
+  padding: 0;
+  padding-left: 35px;
+  margin: 0;
+  border: none;
+  color: var(--color-shark);
+  font-size: var(--font-size-22);
+  font-weight: 700;
+  background-color: var(--color-transparent);
+  background-image: url('/themes/lovata-shopaholic-biolia/assets/img/icon/arrow-black.svg');
+  background-size: 19px 11px;
+  background-position: left center;
+  background-repeat: no-repeat;
+
+  @media (width > 768px) {
+    display: none;
+  }
+}
+
+.category__list {
+  box-sizing: border-box;
+  max-height: 100%;
+  padding: 0 30px 45px;
+  margin: 0;
+  overflow: auto;
+
+  @media (width > 768px) {
+    padding: 0;
+    overflow: hidden;
+    max-height: calc(550px - 30px);
+    transition: max-height 0.2s;
+
+    &_all {
+      max-height: 3000px;
+    }
+  }
+}
+
+.category__item {
+  padding: 20px 0;
+  border-bottom: 1px solid var(--color-iron);
+  list-style: none;
+  background-size: 0;
+
+  &:last-child {
+    border-bottom: none;
+  }
+
+  @media (width > 768px) {
+    padding: 0;
+    margin-bottom: 30px;
+    border: none;
+    background-position: 0;
+    background-repeat: no-repeat;
+    background-size: 25px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+
+.category__link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: calc(100% - 20px);
+  color: var(--color-shark);
+  font-size: var(--font-size-16);
+  line-height: var(--line-height-25);
+  font-weight: 500;
+  text-decoration: none;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  &_current {
+    color: var(--color-evening-sea);
+  }
+
+  @media (width > 768px) {
+    position: relative;
+    padding-left: 45px;
+
+    &_current:hover {
+      cursor: default;
+    }
+  }
+}
+
+.category__number {
+  color: var(--color-shuttle-gray);
+  font-size: var(--font-size-14);
+}
+
+.category__link_current .category__number {
+  position: relative;
+  min-width: 20px;
+  text-align: right;
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--color-white);
+    background-image: url('/themes/lovata-shopaholic-biolia/assets/img/icon/checked_green.svg');
+    background-size: 19px 11px;
+    background-position: right center;
+    background-repeat: no-repeat;
+  }
+}
+
+.category__name {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding-right: 10px;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.category__link_current .category__name:hover {
+  text-decoration: none;
+}
+
+.category__show-more {
+  display: none;
+
+  @media (width > 768px) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    appearance: none;
+    padding: 0;
+    margin: 0;
+    margin-top: 35px;
+    border: none;
+    border-radius: var(--border-radius-50);
+    color: var(--color-shuttle-gray);
+    font-size: var(--font-size-16);
+    font-weight: 500;
+    background-color: var(--color-white);
+    transition: color 0.2s ease-in;
+
+    &:hover {
+      cursor: pointer;
+      color: var(--color-shark);
+    }
+  }
+}
+
+.category__show-more-text {
+  position: relative;
+  padding-right: 25px;
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: block;
+    width: 20px;
+    height: 100%;
+    background-image: url('/themes/lovata-shopaholic-biolia/assets/img/icon/arrow-grey.svg');
+    background-size: 14px;
+    background-position: center;
+    background-repeat: no-repeat;
+    transform: rotate(90deg);
+    transition: transform 0.2s ease-out;
+  }
+}
+
+.category__show-more_active .category__show-more-text {
+  &::after {
+    transform: rotate(-90deg);
+  }
+}

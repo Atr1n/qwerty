@@ -1,0 +1,38 @@
+<ul class="userbar" aria-label="User area">
+    {% if this.theme.has_wish_list %}
+        <li class="userbar__item userbar__item_wish-list">
+            <div class="count-wish-list-ajax">
+                {% partial 'product/wish-list/wish-list-info/count-wish-list' %}
+            </div>
+            <div class="wish-list-info__panel">
+                <button type="button" class="wish-list-panel__close js-wish-list" arial-label="Close wish-list popup"></button>{# TODO: change aria-busy attr after request completed #}
+                <span class="wish-list-panel__title">Список покупок</span>
+                <div class="wish-list-panel custom-scroll" id="wish-list-content" role="region" aria-live="polite" aria-busy="true">
+                    <div class="wish-list-ajax"></div>
+                </div>
+            </div>
+        </li>
+    {% endif %}
+    <li class="userbar__item userbar__item_cart _shopaholic-cart-mini-wrapper">
+        <div class="cart-info-ajax">
+            {% partial 'product/cart/cart-mini/cart-info/cart-info' %}
+        </div>
+        <div class="cart-info__panel">
+            <button type="button" class="cart-mini-panel__close js-cart-mini" arial-label="Close cart popup"></button>
+            <span class="cart-mini-panel__title">Ваша корзина</span>
+            <div class="cart-mini-panel custom-scroll" id="cart-mini-content" role="region" aria-live="polite" aria-busy="true">
+                <div class="cart-mini-ajax"></div>
+
+                {% partial 'product/cart/cart-total/cart-total' bCheckout=false %}
+                <div class="cart-mini-price__actions">
+                    <button class="button button_ghost button_arrow-left cart-mini-price__continue js-cart-mini" type="button">
+                        <span class="button__text">Продолжить покупки</span>
+                    </button>
+                    <a class="button cart-mini-price__checkout button_arrow-right" href="{{ 'checkout'|page }}">
+                        <span class="button__text">Купить</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </li>
+</ul>

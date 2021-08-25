@@ -1,0 +1,13 @@
+columns:
+    id:
+        label: id
+        type: number
+    logo:
+        label: logo
+        type: text
+    url:
+        label: url
+        type: text
+    sort_order:
+        label: sort_order
+        type: number

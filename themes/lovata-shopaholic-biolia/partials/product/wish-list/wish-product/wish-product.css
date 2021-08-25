@@ -1,0 +1,209 @@
+.wish-product {
+  display: grid;
+  grid-template-areas:
+    'INFO REMOVE'
+    'CART CART';
+
+  @media (width > 768px) {
+    grid-template-areas: 'INFO CART REMOVE';
+    grid-template-columns: 1fr auto auto;
+    height: 76px;
+  }
+}
+
+.wish-product__info {
+  display: grid;
+  grid-area: INFO;
+  grid-template-columns: 65px auto;
+  grid-template-areas:
+    'IMG TITLE'
+    'IMG PRICE';
+
+  @media (width > 768px) {
+    grid-template-columns: 125px auto;
+  }
+}
+
+.wish-product__link {
+  display: block;
+  height: 100%;
+  grid-area: IMG;
+  font-size: var(--font-size-0);
+  text-align: center;
+  margin-right: 10px;
+}
+
+.wish-product__img {
+  height: 100%;
+  max-height: 55px;
+  width: 55px;
+  object-fit: contain;
+
+  @media (width > 768px) {
+    height: 100%;
+    max-height: 76px;
+    width: 76px;
+  }
+}
+
+.wish-product__title {
+  grid-area: TITLE;
+  align-self: end;
+  font-weight: 700;
+  color: var(--color-black);
+  text-decoration: none;
+  font-size: var(--font-size-14);
+  line-height: var(--line-height-20);
+  padding-bottom: 8px;
+
+  @media (width > 768px) {
+    font-size: var(--font-size-16);
+    line-height: var(--line-height-25);
+  }
+}
+
+.wish-product__params {
+  grid-area: PRICE;
+  align-self: start;
+  display: flex;
+  align-items: flex-end;
+  color: var(--color-shuttle-gray);
+  font-weight: 700;
+  font-size: var(--font-size-14);
+  line-height: var(--line-height-20);
+}
+
+.wish-product__params-price {
+  font-size: var(--font-size-16);
+
+  &_old {
+    text-decoration: line-through;
+    margin-left: 5px;
+  }
+}
+
+.wish-product__params-currency {
+  display: inline-block;
+  font-size: var(--font-size-16);
+}
+
+.wish-product__cart-info {
+  grid-area: CART;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 10px;
+
+  @media (width > 768px) {
+    padding-top: 0;
+  }
+}
+
+.wish-product__quantity {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.wish-product__quantity-input {
+  appearance: textfield;
+  background-color: var(--color-transparent);
+  border: none;
+  max-width: 30px;
+  text-align: center;
+  font-size: var(--font-size-16);
+  font-weight: 700;
+  color: var(--color-black);
+
+  @media (width > 768px) {
+    max-width: 40px;
+    font-size: var(--font-size-20);
+  }
+}
+
+.wish-product__quantity-input::-webkit-outer-spin-button,
+.wish-product__quantity-input::-webkit-inner-spin-button {
+  appearance: none;
+  margin: 0;
+}
+
+.wish-product__change-btn {
+  appearance: none;
+  border: none;
+  box-shadow: none;
+  width: 35px;
+  height: 35px;
+  border-radius: var(--border-radius-circle);
+  background-color: var(--color-porcelain);
+  font-size: var(--font-size-16);
+  font-weight: 700;
+  color: var(--color-shark);
+
+  &:active {
+    background-color: var(--color-iron);
+  }
+
+  @media (width > 768px) {
+    width: 28px;
+    height: 28px;
+  }
+}
+
+.wish-product__price {
+  font-size: var(--font-size-16);
+  font-weight: 700;
+
+  @media (width > 768px) {
+    display: flex;
+    justify-content: center;
+    width: 140px;
+    text-align: center;
+    font-size: var(--font-size-20);
+  }
+}
+
+.wish-product__price-value {
+  &_old {
+    text-decoration: line-through;
+    margin-left: 5px;
+    color: var(--color-shuttle-gray);
+  }
+}
+
+.wish-product__add {
+  position: relative;
+}
+
+.wish-product__add .button__text {
+  padding-left: 30px;
+}
+
+.wish-product__add .button__text::before {
+  content: '';
+  position: absolute;
+  top: 10px;
+  left: 27px;
+  display: block;
+  background-image: url('/themes/lovata-shopaholic-biolia/assets/img/icon/cart.svg');
+  background-size: 100%;
+  background-repeat: no-repeat;
+  width: 18px;
+  height: 18px;
+}
+
+.wish-product__remove {
+  grid-area: REMOVE;
+  align-self: center;
+  justify-self: end;
+  border: none;
+  box-shadow: none;
+  width: 20px;
+  height: 20px;
+  padding: 0;
+  margin: 0 0 0 47px;
+  background-color: var(--color-transparent);
+  background-image: url('/themes/lovata-shopaholic-biolia/assets/img/icon/cross.svg');
+  background-size: 14px 14px;
+  background-position: center;
+  background-repeat: no-repeat;
+}

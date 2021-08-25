@@ -1,0 +1,35 @@
+.wish-list-button {
+  appearance: none;
+  border-width: 0;
+  border-radius: var(--border-radius-0);
+  background-color: var(--color-transparent);
+  width: 44px;
+  height: 36px;
+  padding: 7px 10px;
+  cursor: pointer;
+}
+
+.wish-list-button__icon-favorite {
+  display: none;
+}
+
+.wish-list-button__icon-not-favorite-path {
+  transition: stroke 0.2s ease-out;
+}
+
+.wish-list-button__icon-not-favorite:hover .wish-list-button__icon-not-favorite-path {
+  stroke: var(--color-mona-lisa);
+}
+
+.wish-list-button:active .wish-list-button__icon-not-favorite-path {
+  stroke: var(--color-mona-lisa);
+  fill: var(--color-mona-lisa);
+}
+
+.wish-list-button_favorite .wish-list-button__icon-favorite {
+  display: block;
+}
+
+.wish-list-button_favorite .wish-list-button__icon-not-favorite {
+  display: none;
+}

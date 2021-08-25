@@ -1,0 +1,55 @@
+<footer class="footer">
+			<div class="container">
+				<div class="footer-content">
+					<div class="footer-item">
+						<div class="footer-title">
+							<h2>Присоединяйтесь</h2>
+						</div>
+						<div class="footer-social">
+							<div class="footer-social__item">
+								<a href="#"><img src="{{'assets/img/media/fb.svg'|theme}}" width="40" alt="Facebook"></a>
+							</div>
+							<div class="footer-social__item">
+								<a href="#"><img src="{{'assets/img/media/vk.svg'|theme}}" width="40" alt="Vk"></a>
+							</div>
+							<div class="footer-social__item">
+								<a href="#"><img src="{{'assets/img/media/instagram.svg'|theme}}" width="40" alt="Instagram"></a>
+							</div>
+							<div class="footer-social__item">
+								<a href="#"><img src="{{'assets/img/media/youtube.svg'|theme}}" width="40" alt="Youtube"></a>
+							</div>
+						</div>
+						<div class="footer-logo">
+							<a href="index.html"><img src="{{'assets/img/logo.svg'|theme}}" alt="qwerty" width="200"></a>
+						</div>
+					</div>
+					<div class="footer-item">
+						<div class="footer-title">
+							<h2>Компания QWERTY</h2>
+						</div>
+						<div class="footer-list">
+							<ul>
+							{% for item in footerMenuFirst.MenuItems %}
+								<li><a href="{{item.url}}">{{item.title}}</a></li>
+							{% endfor %}	
+							</ul>
+						</div>
+					</div>
+					<div class="footer-item">
+						<div class="footer-title">
+							<h2>Полезно</h2>
+						</div>
+						<div class="footer-list">
+							<ul>
+							{% for item in footerMenuSecond.MenuItems %}
+								<li><a href="{{item.url}}">{{item.title}}</a></li>
+							{% endfor %}	
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="footer-copy">
+				<p>Qwerty.kz © 2021. Все права защищены.</p>
+			</div>
+		</footer>

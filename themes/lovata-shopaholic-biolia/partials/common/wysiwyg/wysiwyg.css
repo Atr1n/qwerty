@@ -1,0 +1,89 @@
+/* stylelint-disable selector-max-type,
+                    declaration-no-important,
+                    selector-max-compound-selectors,
+                    selector-max-combinators,
+                    no-descending-specificity,
+                    declaration-property-value-whitelist
+*/
+
+.wysiwyg {
+  & h2 {
+    font-size: var(--font-size-22);
+    color: var(--color-shark);
+
+    @media (width > 768px) {
+      font-size: var(--font-size-28);
+    }
+  }
+
+  & h3,
+  & h4 {
+    font-size: var(--font-size-18);
+    color: var(--color-shark);
+
+    @media (width > 768px) {
+      font-size: var(--font-size-20);
+    }
+  }
+
+  & strong {
+    font-weight: 900;
+  }
+
+  & p {
+    font-size: var(--font-size-16);
+    line-height: var(--line-height-25);
+    font-weight: 500;
+    color: var(--color-shuttle-gray);
+  }
+
+  & p > img {
+    width: 100%;
+    display: block;
+    margin: 30px auto;
+    object-fit: contain;
+
+    @media (width > 768px) {
+      max-width: 600px;
+      max-height: 400px;
+    }
+  }
+
+  & ul,
+  & ol {
+    font-size: var(--font-size-16);
+    font-weight: 500;
+    color: var(--color-shuttle-gray);
+  }
+
+  & li {
+    margin-bottom: 5px;
+  }
+
+  & li ul,
+  & li ol {
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+
+  & a {
+    &:link {
+      color: var(--color-black);
+      transition: color 0.2s ease-in;
+    }
+
+    &:visited {
+      color: var(--color-shark);
+    }
+
+    &:hover {
+      color: var(--color-shark);
+    }
+
+    &:active {
+      color: var(--color-shark);
+    }
+  }
+}
+
+/* stylelint-enable */

@@ -1,0 +1,104 @@
+.wish-list-info {
+  display: block;
+  position: relative;
+  width: 28px;
+  max-width: 28px;
+  height: 28px;
+  padding: 0;
+  border: none;
+  border-radius: var(--border-radius-circle);
+  font-size: var(--font-size-10);
+  background-color: var(--color-porcelain);
+  background-image: url('/themes/lovata-shopaholic-biolia/assets/img/icon/favorite.svg');
+  background-size: 12px;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  @media (width > 768px) {
+    width: 44px;
+    max-width: 44px;
+    height: 44px;
+    background-size: 16px;
+    box-shadow: var(--shadow-no-border);
+    transition: box-shadow 0.2s ease-out;
+
+    &:hover {
+      cursor: pointer;
+      box-shadow: var(--shadow-border);
+      transition: box-shadow 0.2s ease-out;
+    }
+  }
+}
+
+.wish-list-info__counter {
+  position: absolute;
+  top: -5px;
+  right: -10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  border-radius: var(--border-radius-circle);
+  color: var(--color-white);
+  font-weight: 500;
+  background-color: var(--color-mona-lisa);
+  z-index: 2;
+
+  @media (width > 768px) {
+    top: -3px;
+    right: -5px;
+  }
+}
+
+.wish-list-info__panel {
+  display: none;
+}
+
+@keyframes wish-drawer {
+  from {
+    transform: translate(-50%, -110%);
+  }
+
+  to {
+    transform: translate(-50%, -50%);
+  }
+}
+
+@keyframes wish-drawer-mobile {
+  from {
+    transform: translate(-110%, 0%);
+  }
+
+  to {
+    transform: translate(0%, 0%);
+  }
+}
+
+.wish-list-info__panel_visible {
+  display: block;
+  box-sizing: border-box;
+  padding: 50px 30px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--color-white);
+  animation-name: wish-drawer-mobile;
+  animation-duration: 200ms;
+  animation-timing-function: ease-out;
+  animation-fill-mode: forwards;
+  z-index: 100;
+
+  @media (width > 768px) {
+    animation-name: wish-drawer;
+    width: 1100px;
+    height: 100%;
+    max-height: 626px;
+    border-radius: var(--border-radius-20);
+    padding: 70px 100px;
+    top: 50%;
+    left: 50%;
+  }
+}

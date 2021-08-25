@@ -1,0 +1,29 @@
+<article class="article-card">
+    <a href="{{ obArticle.getPageUrl('news-page') }}" class="article-card__link">
+        <div class="article-card__img-wrap">
+            {% if obArticle.preview_image is not empty %}
+                <picture class="article-card__img-container">
+                    <source media="(min-width:769px)" data-srcset="{{ obArticle.preview_image.getThumb(sWidth, sHeight, {'quality': 100, 'extension': 'webp'}) }}" type="image/webp">
+                    <source media="(min-width:769px)" data-srcset="{{ obArticle.preview_image.getThumb(sWidth, sHeight, {'quality': 100}) }}" type="image/jpeg">
+                    <source media="(max-width:768px)" data-srcset="{{ obArticle.preview_image.getThumb(sWidth, sHeight, {'quality': 100, 'extension': 'webp'}) }}" type="image/webp">
+                    <source media="(max-width:768px)" data-srcset="{{ obArticle.preview_image.getThumb(sWidth, sHeight, {'quality': 100}) }}" type="image/jpeg">
+                    <img class="article-card__img js-lazy-load"
+                         data-src="{{ obArticle.preview_image.getThumb(sWidth, sHeight, {'quality': 100}) }}"
+                         alt="{{ obArticle.preview_image.description }}"
+                    >
+                </picture>
+                {% partial 'common/preloader/preloader' wrapperClass='article-card__preloader' %}
+            {% else %}
+                <img class="article-card__img article-card__img_nophoto"
+                     src="{{ 'assets/img/nophoto.svg'|theme }}"
+                     itemprop="image"
+                     alt="No product image"
+                >
+            {% endif %}
+        </div>
+        <h2 class="article-card__title">{{ obArticle.title }}</h2>
+        <time class="article-card__date" datetime="{{ obArticle.published_start.format('Y-m-d') }}">
+            {{ obArticle.published_start.format('F d, Y') }}
+        </time>
+    </a>
+</article>

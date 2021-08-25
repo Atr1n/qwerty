@@ -1,0 +1,11 @@
+{% set htmlTag = htmlTag|default('h1') %}
+<div class="success {{ wrapperClass }}">
+    <{{ htmlTag }} class="success__title">{{ title }}</{{ htmlTag }}>
+    <p class="success__note">{{ note }}</p>
+    {% partial 'form/button/button'
+        wrapperClass=buttonClass~' success__btn'
+        text="Done"
+        href=href
+        link='true'
+    %}
+</div>

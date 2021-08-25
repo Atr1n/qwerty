@@ -1,0 +1,33 @@
+.search__btn {
+  position: relative;
+  width: 28px;
+  height: 28px;
+  max-width: 28px;
+  padding: 0;
+  background-color: var(--color-porcelain);
+  border: none;
+  border-radius: var(--border-radius-circle);
+  background-image: url('/themes/lovata-shopaholic-biolia/assets/img/icon/search.svg');
+  background-repeat: no-repeat;
+  background-size: 10px;
+  background-position: center;
+
+  @media (width > 768px) {
+    width: 44px;
+    height: 44px;
+    max-width: 44px;
+    background-size: 16px;
+    box-shadow: var(--shadow-no-border);
+    transition: box-shadow 0.2s ease-out;
+
+    &:hover {
+      cursor: pointer;
+      box-shadow: var(--shadow-border);
+      transition: box-shadow 0.2s ease-out;
+    }
+  }
+}
+
+.search__btn-text {
+  font-size: var(--font-size-0);
+}

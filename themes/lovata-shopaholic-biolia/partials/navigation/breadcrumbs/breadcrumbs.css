@@ -1,0 +1,63 @@
+.breadcrumbs__list {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  padding: 0;
+  margin: 0;
+}
+
+.breadcrumbs__item {
+  position: relative;
+  padding-right: 35px;
+  list-style-type: none;
+
+  /* stylelint-disable a11y/content-property-no-static-value */
+
+  /* fixes lists semantic for Safari and VoiceOver */
+
+  &::before {
+    content: '\200B';
+    position: absolute;
+  }
+
+  /* stylelint-enable */
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: calc(50% - 2px);
+    right: 0;
+    display: block;
+    width: 35px;
+    height: 8px;
+    background-image: url('/themes/lovata-shopaholic-biolia/assets/img/icon/arrow-dark.svg');
+    background-size: 15px 8px;
+    background-position: center;
+    background-repeat: no-repeat;
+    transform: rotate(180deg);
+  }
+
+  &:last-child {
+    padding-right: 0;
+
+    &::after {
+      display: none;
+    }
+  }
+}
+
+.breadcrumbs__link {
+  color: var(--color-shuttle-gray);
+  font-size: var(--font-size-14);
+  font-weight: 500;
+  text-decoration: none;
+  transition: color 0.2s ease-out;
+}
+
+/* stylelint-disable selector-max-specificity */
+
+.breadcrumbs__item:not(:last-child) .breadcrumbs__link:hover {
+  color: var(--color-shark);
+}
+
+/* stylelint-enable */

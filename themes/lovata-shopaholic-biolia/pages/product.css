@@ -1,0 +1,4 @@
+@import '../partials/product/product';
+@import '../partials/product/product-info/product-info';
+@import '../partials/product/product-price/product-price';
+@import '../partials/product/product-description/product-description';

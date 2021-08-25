@@ -1,0 +1,4 @@
+/themes/**/assets/js/**
+/node_modules/**
+/plugins/**
+/modules/**

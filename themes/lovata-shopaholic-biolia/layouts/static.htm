@@ -1,0 +1,56 @@
+title = "Content"
+
+[staticMenu SideMenuLeft]
+code = "side-menu-left"
+
+[staticMenu FooterMenu]
+code = "footer-menu"
+
+[CategoryList]
+
+[Cart]
+
+[staticPage]
+useContent = 1
+default = 0
+
+[SeoToolbox]
+
+[PaymentMethodList]
+
+[ProductList]
+sorting = "popularity|desc"
+==
+<?php
+function onInit()
+{
+    $this['path_css'] = mix('css/common.css', 'themes/lovata-shopaholic-biolia/assets');
+    $this['path_appjs'] = mix('js/common.js', 'themes/lovata-shopaholic-biolia/assets');
+    $this['path_manifestjs'] = mix('js/manifest.js', 'themes/lovata-shopaholic-biolia/assets');
+    $this['path_vendorjs'] = mix('js/vendor.js', 'themes/lovata-shopaholic-biolia/assets');
+
+    $this['obPaymentMethodList'] = $this->PaymentMethodList->make()->sort()->active();
+}
+?>
+==
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% partial 'common/head' %}
+</head>
+<body itemscope itemtype="http://schema.org/WebPage" data-page-id="{{ this.page.id }}">
+    {{ SeoToolbox.getBodyBegin()|raw }}
+    <div class="wrapper grid">
+        {% partial 'header/header' %}
+        <main class="main static">
+            <h1 class="page-title">{{ SeoToolbox.getPageTitle()|default(this.page.meta_title)|default(this.page.title) }}</h1>
+            <div class="wysiwyg">
+                {% page %}
+            </div>
+        </main>
+        {% partial 'footer/footer' %}
+    </div>
+    {% partial 'common/script' %}
+    {{ SeoToolbox.getBodyEnd()|raw }}
+</body>
+</html>

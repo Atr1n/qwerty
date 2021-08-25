@@ -1,0 +1,40 @@
+{% set sTitle = SeoToolbox.getPageTitle(obArticle, arSEOParams)|default(obArticle.title) %}
+{% set sContent = SeoToolbox.getPageDescription(obArticle, arSEOParams)|default(obArticle.content) %}
+{% set obArticleList = ArticleList.make().sort('publish|desc').published() %}
+{% set obNextArticle = obArticleList.getNearestNext(obArticle.id, 1, false).first() %}
+{% set obPrevArticle = obArticleList.getNearestPrev(obArticle.id, 1, false).first() %}
+{% set arBreadcrumbs = [
+    {'slug': 'news-list'|page, 'name': 'Our News' }
+] %}
+<section class="news-page" itemscope itemtype="http://schema.org/NewsArticle">
+    <link href="{{ ''|page }}" itemprop="url">
+    <meta itemprop="author" content="{{ this.theme.company_name }}">
+    <meta content="{{ obArticle.preview_image.getThumb(508, 332, {'quality': 100}) }}" itemprop="image">
+    {% partial 'navigation/breadcrumbs/breadcrumbs' wrapperClass='news-page__breadcrumbs' arBreadcrumbs=arBreadcrumbs  %}
+    <h1 class="page-title news-page__title" itemprop="headline">{{ sTitle }}</h1>
+    <time itemprop="datePublished" class="news-page__date" datetime="{{ obArticle.published_start.format('Y-m-d') }}">
+        {{ obArticle.published_start.format('nS F') }}
+    </time>
+    {% if obArticle.content is not empty %}
+        <div class="news-page__wrapper" itemtype="https://schema.org/Organization" itemscope="itemscope" itemprop="publisher">
+                <span itemprop="logo" itemscope itemtype="https://schema.org/ImageObject">
+                    <link itemprop="image" href="{{ this.theme.logo_image|media }}">
+                    <link itemprop="url" href="{{ this.theme.logo_image|media }}">
+                </span>
+            <meta itemprop="name" content="{{ this.theme.company_name }}">
+            <div class="wysiwyg news-page__wysiwyg" itemprop="articleBody">{{ sContent|raw }}</div>
+        </div>
+    {% endif %}
+</section>
+<section class="news-page__links">
+    {% if obPrevArticle.isNotEmpty() %}
+        <a class="button button_arrow-left button_arrow-left_filled news-page-link" href="{{ obPrevArticle.getPageUrl('news-page') }}">
+            <span class="button__text">Previous Article</span>
+        </a>
+    {% endif %}
+    {% if obNextArticle.isNotEmpty() %}
+        <a class="button button_arrow-right news-page-link" href="{{ obNextArticle.getPageUrl('news-page') }}">
+            <span class="button__text">Next Article</span>
+        </a>
+    {% endif %}
+</section>

@@ -1,0 +1,254 @@
+.drawer-nav {
+  position: absolute;
+}
+
+@keyframes drawer {
+  from {
+    left: -110%;
+  }
+
+  to {
+    left: 0;
+  }
+}
+
+.drawer-nav__list {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.drawer-nav_open {
+  box-sizing: border-box;
+  top: 70px;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: calc(100% - 66px);
+  margin: 0;
+  background-color: var(--color-white);
+  animation-name: drawer;
+  animation-duration: 200ms;
+  animation-timing-function: ease-out;
+  animation-fill-mode: forwards;
+  z-index: 100;
+
+  @media (width > 768px) {
+    top: 0;
+    width: 390px;
+    height: 100%;
+    padding-top: 28px;
+  }
+}
+
+.drawer-nav__wrapper {
+  padding: 24px 30px 20px;
+  margin: 0 0 30px;
+  color: var(--color-transparent);
+  overflow: auto;
+}
+
+.drawer-nav__wrapper_hidden {
+  display: none;
+}
+
+.drawer-nav__btn {
+  box-sizing: border-box;
+  position: relative;
+  appearance: none;
+  min-width: 40px;
+  height: 40px;
+  padding: 0;
+  border: none;
+  border-radius: var(--border-radius-circle);
+  background-color: var(--color-main);
+  background-image: url('/themes/lovata-shopaholic-biolia/assets/img/icon/burger.svg');
+  background-size: 14px 10px;
+  background-position: center;
+  background-repeat: no-repeat;
+  cursor: pointer;
+
+  &_close {
+    background-size: 12px;
+    background-image: url('/themes/lovata-shopaholic-biolia/assets/img/icon/black-cross.svg');
+  }
+
+  &:active,
+  &:focus {
+    box-shadow: var(--shadow-border);
+    transition: box-shadow 0.2s ease-out;
+  }
+
+  @media (width > 768px) {
+    width: 150px;
+    height: 47px;
+    margin-right: 29px;
+    border-radius: var(--border-radius-50);
+    background-image: none;
+    transition: box-shadow 0.2s ease-out;
+    box-shadow: var(--shadow-no-border);
+
+    &:hover {
+      transition: box-shadow 0.2s ease-out;
+      cursor: pointer;
+      box-shadow: var(--shadow-border);
+    }
+  }
+}
+
+.drawer-nav__btn-text {
+  display: none;
+
+  @media (width > 768px) {
+    display: inline-block;
+    padding-left: 28px;
+    color: var(--color-white);
+    font-size: var(--font-size-16);
+    font-weight: 500;
+    background-image: url('/themes/lovata-shopaholic-biolia/assets/img/icon/burger.svg');
+    background-size: 14px 10px;
+    background-position: left center;
+    background-repeat: no-repeat;
+  }
+}
+
+.drawer-nav__sublist {
+  display: none;
+  order: 1;
+  width: 100%;
+  padding: 0;
+  margin: 16px 0 26px;
+
+  &_open {
+    display: block;
+  }
+}
+
+.drawer-nav__item {
+  box-sizing: border-box;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: flex-start;
+  min-height: 75px;
+  padding-top: 15px;
+  border-bottom: 1px solid var(--color-mystic);
+  list-style: none;
+
+  &:last-child {
+    border-bottom: none;
+  }
+}
+
+.drawer-nav__item-link {
+  display: flex;
+  align-items: center;
+  height: 44px;
+  color: var(--color-shark);
+  font-size: var(--font-size-18);
+  font-weight: 700;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.drawer-nav__item-btn {
+  appearance: none;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  margin-left: auto;
+  border: none;
+  background-color: var(--color-transparent);
+  transition: background-color 0.2s;
+  border-radius: var(--border-radius-50);
+
+  &:hover {
+    box-shadow: var(--shadow-border);
+    background-color: var(--color-porcelain);
+    transition: box-shadow 0.2s ease-out;
+  }
+
+  &:active,
+  &:focus {
+    box-shadow: var(--shadow-border);
+    background-color: var(--color-mystic);
+  }
+}
+
+.drawer-nav__item-icon {
+  color: var(--color-shark);
+  font-size: var(--font-size-22);
+  font-weight: 700;
+}
+
+.drawer-nav__subitem {
+  margin-bottom: 16px;
+  list-style: none;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.drawer-nav__subitem-link {
+  display: inline-block;
+  color: var(--color-shark);
+  font-weight: 500;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.drawer-nav__menu-wrap {
+  display: none;
+}
+
+.drawer-nav_open .drawer-nav__menu-wrap {
+
+  @media (width > 768px) {
+    display: block;
+  }
+}
+
+.drawer-nav__title {
+  padding-left: 20px;
+  color: var(--color-shark);
+  font-size: var(--font-size-26);
+  font-weight: 700;
+}
+
+.drawer-nav__close {
+  box-sizing: border-box;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  appearance: none;
+  min-width: 44px;
+  height: 44px;
+  padding: 0;
+  border: none;
+  border-radius: var(--border-radius-50);
+  background-color: var(--color-porcelain);
+  background-image: url('/themes/lovata-shopaholic-biolia/assets/img/icon/black-cross.svg');
+  background-size: 12px;
+  background-position: center;
+  background-repeat: no-repeat;
+  cursor: pointer;
+
+  &:hover {
+    box-shadow: var(--shadow-border);
+    transition: box-shadow 0.2s ease-out;
+  }
+
+  &:active,
+  &:focus {
+    box-shadow: var(--shadow-border);
+    background-color: var(--color-mystic);
+  }
+}

@@ -1,0 +1,75 @@
+.comments {
+    padding-bottom: 10rem;
+    background: url(/src/assets/img/bg-clients.jpg) center no-repeat;
+    background-size: cover;
+    @media only screen and (max-width: 568px) {
+        padding-bottom: 0;
+    }
+    &-title {
+        h2 {
+            font-size: 32px;
+            color: #fff;
+        }
+    }
+    &-content {
+        padding: 5rem 1rem 0.5rem 0.5rem;
+        display: grid;
+        grid-template-columns: repeat(3,1fr);
+        justify-content: center;
+        @media only screen and (max-width: 568px) {
+            display: grid;
+        }
+    }
+    &-item {
+        position: relative;
+        padding: 1rem;
+        justify-content: center;
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+        border-radius: 15px;
+        cursor: pointer;
+        background: #fff;
+        transition: all ease .3s;
+        @media only screen and (max-width: 568px) {
+            margin-bottom: 4rem;
+        }
+        &:hover {
+          transform: scale(1.05);
+        }
+        &:not(:first-child) {
+            margin-left: 1rem;
+            @media only screen and (max-width: 568px) {
+                margin-left: 0;
+            }
+        }
+        &__img {
+            position: absolute;
+            top: -40px;
+            width: 100px;
+            height: 100px;
+            margin: 0 auto;
+            overflow: hidden;
+            position: relative;
+            cursor: pointer;
+            border-radius: 50%;
+            transition: 0.1s;
+        }
+        &__title {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            top: -20px;
+            padding-bottom: 1rem;
+            h3 {
+                font-weight: bold;
+            }
+        }
+        &__text {
+            position: relative;
+            top: -10px;
+            padding-bottom: 0.5rem;
+            p {
+                text-align: center;
+            }
+        }
+    }
+}

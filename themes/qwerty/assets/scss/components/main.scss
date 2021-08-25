@@ -1,0 +1,21 @@
+.main {
+    padding: 5rem 0;
+    &-item {
+        padding: 2rem 0;
+        display: flex;
+        justify-content: center;
+        img {
+            @media only screen and (max-width: 568px) {
+                width: 200px;
+            }
+        }
+    }
+    &-wrapper {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        @media only screen and (max-width: 568px) {
+            display: grid;
+        }
+    }
+}

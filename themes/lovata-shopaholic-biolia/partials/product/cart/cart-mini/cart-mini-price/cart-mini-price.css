@@ -1,0 +1,16 @@
+.cart-mini-price__actions {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding-right: 10px;
+
+  @media (width > 768px) {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}
+
+.cart-mini-price__continue {
+  margin-bottom: 15px;
+}

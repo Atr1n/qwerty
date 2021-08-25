@@ -1,0 +1,20 @@
+.category-menu {
+    padding: 3rem 2rem;
+    @media only screen and (max-width: 1366px) {
+        padding: 1rem;
+    }
+    ul {
+        li {
+            margin-bottom: 2rem;
+            @media only screen and (max-width: 1366px) {
+                margin-bottom: .5rem;
+            }
+            a {
+                color: $blue;
+                @media only screen and (max-width: 1366px) {
+                    font-size: 16px;
+                }
+            }
+        }
+    }
+}

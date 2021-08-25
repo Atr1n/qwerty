@@ -1,0 +1,11 @@
+<div class="swiper-container-brand brand-content">
+	<div class="swiper-wrapper">
+		{% for partner in partners %}
+        <div class="swiper-slide">
+			<div class="brand-item">
+				<img src="{{partner.logo|media}}" alt="партнер">
+			</div>
+		</div>
+        {% endfor %}
+	</div>
+</div>

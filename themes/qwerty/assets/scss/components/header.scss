@@ -1,0 +1,156 @@
+.header {
+    margin-top: 1rem;
+    &-top {
+        display: flex;
+        justify-content: flex-end;
+        padding-bottom: 1rem;
+        margin-bottom: 3rem;
+        border-bottom: 1px solid #666;
+        @media only screen and (max-width:550px) {
+            margin-bottom: 2rem;
+            justify-content: flex-start;
+        }
+        ul {
+            display: flex;
+            li {
+                &:not(:last-child) {
+                    margin-right: 2rem;
+                }
+                a {
+                    color: $blue;
+                    font-size: 15px;
+                    font-weight: 600;
+                    transition: all ease-out .3s;
+                    &:hover {
+                        color: #666;
+                    }
+                }
+            }
+        }
+    }
+    &-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 2rem;
+    }
+    &-item {
+        display: flex;
+        a {
+            img {
+                @media only screen and (max-width:550px) {
+                    width: 150px;
+                }
+            }
+        }
+        &__basket {
+            padding: 10px;
+            margin-left: 1rem;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: $blue;
+            cursor: pointer;
+            @media only screen and (max-width:550px) {
+                width: 50px;
+                height: 50px;
+            }
+        }
+        &__star{
+            padding: 10px;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: $yellow;
+            cursor: pointer;
+            @media only screen and (max-width:550px) {
+                width: 50px;
+                height: 50px;
+            }
+        }
+    }
+    &-list {
+        display: flex;
+        margin-top: 1rem;
+        align-items: center;
+        &-search {
+            @media only screen and (max-width:550px) {
+                width: 100%;
+            }
+        }
+        &-item {
+            display: flex;
+            margin-left: 2rem;
+            @media only screen and (max-width:550px) {
+                margin-left: 0;
+            }
+            &:last-child {
+                margin-left: auto;
+                @media only screen and (max-width:550px) {
+                    margin-left: 0;
+                }
+            }
+            ul {
+                li {
+                    a {
+                        color: $blue;
+                        font-size: 16px;
+                        font-weight: 600;
+                        transition: all ease-out .3s;
+
+                        &:hover {
+                            color: #666;
+                        }
+                    }
+                }
+            }
+            input {
+                padding: 5px 20px;
+                border: 1px solid $blue;
+                border-radius: 25px;
+                font-size: 16px;
+                @media only screen and (max-width:550px) {
+                    width: 100%;
+                }
+            }
+        }
+        &__item {
+            display: flex;
+            margin-left: 1rem;
+            justify-content: space-between;
+            @media only screen and (max-width:550px) {
+                display: grid;
+            }
+            li {
+                @media only screen and (max-width:550px) {
+                    margin-bottom: 1rem;
+                }
+                &:not(:first-child) {
+                    @media only screen and (max-width:550px) {
+                        margin-left: 0;
+                    }
+                }
+                a {
+                    margin-left: 2.5rem;
+                    color: $blue;
+                    font-size: 16px;
+                    font-weight: 600;
+                    transition: all ease-out .3s;
+                    &:hover {
+                        color: #666;
+                    }
+                }
+            }
+        }
+    }
+    &-ddp {
+        height: 50px;
+    }
+}
+
+.search {
+    padding: 0.4rem 3rem;
+    border-radius: 15px;
+    color: #fff !important;
+    background: $blue;
+}

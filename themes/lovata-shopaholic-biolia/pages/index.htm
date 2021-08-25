@@ -1,0 +1,36 @@
+title = "index"
+url = "/"
+layout = "main"
+is_hidden = 0
+
+[ArticleList]
+sorting = "publish|desc"
+==
+<?php
+function onInit()
+{
+    $arPopularCategoryIdList = $this->theme->popular_categories;
+    if (empty($arPopularCategoryIdList) || !is_array($arPopularCategoryIdList)) {
+        $arPopularCategoryIdList = [];
+    } else {
+        $arPopularCategoryIdList = array_column($arPopularCategoryIdList, 'category_id');
+    }
+
+    $this['arPopularCategoryIdList'] = $arPopularCategoryIdList;
+
+    if ($this->theme->has_instagram_feed) {
+        $this->addComponent('ArtDark\Instagram\Components\InstaFeedData', 'InstaFeedData', ['time_update' => '60']);
+    }
+}
+?>
+==
+{% partial 'content/main-slider/main-slider' %}
+{% partial 'content/about-us/about-us' %}
+{% partial 'product/product-slider/product-slider' %}
+{% partial 'product/popular-category/popular-category' %}
+{% partial 'article/article-slider/article-slider' %}
+{% if this.theme.has_instagram_feed %}
+    <section class="photo-slider">
+        {% partial 'content/photo-slider/photo-slider-ajax' %}
+    </section>
+{% endif %}

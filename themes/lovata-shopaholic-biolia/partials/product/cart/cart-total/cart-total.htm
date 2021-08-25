@@ -1,0 +1,105 @@
+{# @var Cart \Lovata\OrdersShopaholic\Components\Cart #}
+{# @var obCartPositionList \Lovata\OrdersShopaholic\Classes\Collection\CartPositionCollection #}
+{# @var obTotalPriceData \Lovata\OrdersShopaholic\Classes\PromoMechanism\TotalPriceContainer #}
+{# @var obPriceData \Lovata\OrdersShopaholic\Classes\PromoMechanism\TotalPriceContainer #}
+{# @var obActiveShippingType \Lovata\OrdersShopaholic\Classes\Item\ShippingTypeItem #}
+{# @var obPaymentMethodList \Lovata\OrdersShopaholic\Classes\Collection\PaymentMethodCollection #}
+{# @var obPaymentMethod \Lovata\OrdersShopaholic\Classes\Item\PaymentMethodItem #}
+
+{% if obShippingTypeList is empty %}
+    {% set obShippingTypeList = ShippingTypeList.make().sort().active() %}
+
+    {% set iActiveShippingTypeID = input('shipping_type_id') %}
+    {% set obActiveShippingType = obShippingTypeList.find(iActiveShippingTypeID) %}
+    {% if obActiveShippingType.isEmpty() %}
+        {% set obActiveShippingType = obShippingTypeList.first() %}
+    {% endif %}
+{% endif %}
+
+{% if obCartPositionList is empty %}
+    {% set obCartPositionList = Cart.get() %}
+{% endif %}
+{% set obTotalPriceData = Cart.getTotalPriceData() %}
+{% set obPriceData = obCartPositionList.getTotalPriceData() %}
+
+<div class="cart-total">
+    <table class="cart-total__price-section">
+        <tr>
+            <td class="cart-total__price-section-header">Subtotal</td>
+            <td class="cart-total__price-section-value">
+                <div class="cart-total__price-wrapper">
+                    <span class="cart-total__currency">{{ Cart.getCurrency() }}</span>
+                    <span class="cart-total__value _shopaholic-cart"
+                          data-group="position-total-price"
+                          data-field="price"
+                    >
+                        {{ obPriceData.price }}
+                    </span>
+                    {% if obPriceData.discount_price_value > 0 %}
+                        <span class="cart-total__value cart-total__value_old _shopaholic-cart"
+                              data-group="position-total-price"
+                              data-field="old-price"
+                        >
+                            {{ obPriceData.old_price }}
+                        </span>
+                    {% endif %}
+                </div>
+            </td>
+        </tr>
+        {% if bCheckout %}
+            <tr>
+                <td class="cart-total__price-section-header">
+                    Shipping
+                </td>
+                <td class="cart-total__price-section-value">
+                    <div class="cart-total__price-wrapper">
+                        <span class="cart-total__currency">{{ Cart.getCurrency() }}</span>
+                        <span class="cart-total__value _shopaholic-cart" data-group="shipping_price" data-field="price">{{ obActiveShippingType.price }}</span>
+                        {% if obActiveShippingType.discount_price_value > 0 %}
+                            <span class="cart-total__value cart-total__value_old _shopaholic-cart"  data-group="shipping_price" data-field="old_price">
+                                {{ obActiveShippingType.old_price }}
+                            </span>
+                        {% endif %}
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td class="cart-total__price-section-header cart-total__price-section-header_total">Total</td>
+                <td class="cart-total__price-section-value cart-total__price-section-value_total">
+                    <div class="cart-total__price-wrapper">
+                        <span class="cart-total__currency">{{ Cart.getCurrency() }}</span>
+                        <span class="cart-total__value _shopaholic-cart"
+                              data-group="total-price"
+                              data-field="price"
+                        >
+                            {{ obTotalPriceData.price  }}
+                        </span>
+                        {% if obTotalPriceData.discount_price_value > 0 %}
+                            <span class="cart-total__value cart-total__value_old _shopaholic-cart"
+                                  data-group="total-price"
+                                  data-field="old-price"
+                            >
+                                {{ obTotalPriceData.old_price  }}
+                            </span>
+                        {% endif %}
+                    </div>
+                </td>
+            </tr>
+        {% endif %}
+    </table>
+    <div class="cart-total__info">
+        {% if obPaymentMethodList.isNotEmpty() %}
+            <p class="cart-total__text">Payment methods:</p>
+            <ol class="cart-total__methods">
+                {% for obPaymentMethod in obPaymentMethodList %}
+                    <li>{{ obPaymentMethod.name }}</li>
+                {% endfor %}
+            </ol>
+        {% endif %}
+        {% if this.theme.message_payment_methods is not empty %}
+            <p class="cart-total__text" id="shipping-footnote">
+                {{ this.theme.message_payment_methods }}
+            </p>
+        {% endif %}
+    </div>
+</div>

@@ -1,0 +1,59 @@
+{% set obShippingTypeList = ShippingTypeList.make().sort().active() %}
+
+{% set iActiveShippingTypeID = input('shipping_type_id') %}
+{% set obActiveShippingType = obShippingTypeList.find(iActiveShippingTypeID) %}
+{% if obActiveShippingType.isEmpty() %}
+    {% set obActiveShippingType = obShippingTypeList.first() %}
+{% endif %}
+
+{% set obCartPositionList = Cart.get(obActiveShippingType) %}
+{% set obPaymentMethodList = PaymentMethodList.make().sort().active() %}
+
+<form class="cart _required _shopaholic-order-form">
+    <div class="cart__order cart__section" aria-labelledby="cart-order-info" role="group">
+        <h1 class="page-title cart__heading" id="cart-order-info">{{ sPageTitle }}</h1>
+        <ul class="cart__order-list cart__list">
+            {% for obCartPosition in obCartPositionList %}
+                {% set obOffer = obCartPosition.offer %}
+                {% set obProduct = obOffer.product %}
+                <li class="cart__order-item cart__item _shopaholic-product-wrapper" data-position-id="{{ obCartPosition.id }}">
+                    {% partial 'product/cart/cart-product/cart-product' obProduct=obProduct obOffer=obOffer obCartPosition=obCartPosition id='cart-order'~loop.index %}
+                </li>
+            {% endfor %}
+        </ul>
+        {% partial 'product/cart/cart-total/cart-total' bCheckout=true %}
+        {% if this.theme.has_coupons %}
+            {% set obActiveCoupon = Cart.getAppliedCouponList()|first %}
+            <div class="cart__coupon">
+                <div class="input cart__coupon-input">
+                    <label for="your-coupon" class="input__label {{ obActiveCoupon is not empty ? 'input__label_elevated' : '' }}">Coupon Code</label>
+                    <input
+                        type="{{ type|default('text') }}"
+                        id="your-coupon"
+                        name="coupon"
+                        class="input__field {{ obActiveCoupon is not empty ? 'input__field_disabled cart__coupon-input-field' : 'cart__coupon-input-field' }}"
+                        data-was-change="false"
+                        value="{{ obActiveCoupon.code }}"
+                        data-coupon
+                        {% if obActiveCoupon is not empty %}
+                            disabled="disabled"
+                        {% endif %}
+                    >
+                </div>
+                {% if obActiveCoupon is not empty %}
+                    <button class="button cart__coupon-button _shopaholic-coupon-remove" type="button">
+                        <span class="button__text">Remove Coupon</span>
+                    </button>
+                {% else %}
+                    <button class="button cart__coupon-button button_disabled _shopaholic-coupon-add" disabled="" type="button">
+                        <span class="button__text">Apply Coupon</span>
+                    </button>
+                {% endif %}
+                <div class="tooltip cart__coupon-tooltip tooltip__error" role="alert">Coupon can not be applied</div>
+            </div>
+        {% endif %}
+    </div>
+    {% partial 'product/cart/cart-delivery/cart-delivery' %}
+    {% partial 'product/cart/cart-payment/cart-payment' %}
+    {% partial 'form/button/button' wrapperClass='button_arrow-right create-order' type='submit' text='Place order' %}
+</form>

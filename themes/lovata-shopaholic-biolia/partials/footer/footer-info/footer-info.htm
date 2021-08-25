@@ -1,0 +1,48 @@
+<div class="footer-info"  itemscope itemtype="http://schema.org/Store">
+    <img src="{{ this.theme.logo_image|media }}"
+         alt="{{ this.theme.logo_description }}"
+         title="{{ this.theme.logo_title }}"
+         hidden
+         itemprop="image"
+    >
+    <p class="footer-info__descr">
+        Organic Food Online.
+    </p>
+    {% partial 'footer/footer-social/footer-social' %}
+    {% if this.theme.phone is not empty or this.theme.email is not empty %}
+        <ul class="footer-info__contact">
+            {% if this.theme.phone is not empty %}
+                <li class="footer-info__contact-item">
+                    <span class="footer-info__contact-item-name" itemprop="telephone" >Phone:&nbsp;</span>
+                    <a class="footer-info__contact-item-content" href="tel:{{ this.theme.phone|phone }}"> {{ this.theme.phone }}</a>
+                </li>
+            {% endif %}
+            {% if this.theme.email is not empty %}
+                <li class="footer-info__contact-item">
+                    <span class="footer-info__contact-item-name" itemprop="email" >Email:&nbsp;</span>
+                    <a class="footer-info__contact-item-content" href="mailto:{{ this.theme.email }}">{{ this.theme.email }}</a>
+                </li>
+            {% endif %}
+        </ul>
+    {% endif %}
+    {% if this.theme.privacy_policy_url is not empty %}
+        <a href="{{ this.theme.privacy_policy_url }}" class="footer-info__policy">Privacy Policy</a>
+    {% endif %}
+    {% if this.theme.copyright is not empty %}
+        <span class="footer-info__copyright" itemprop="name">© {{ date('now').format('Y') }} {{ this.theme.copyright }}</span>
+    {% endif %}
+
+    {% if this.theme.country is not empty or this.theme.city is not empty or this.theme.address is not empty %}
+        <span class="footer-info__address" itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">
+            {% if this.theme.country is not empty %}
+                <span itemprop="addressCountry">{{ this.theme.country }}</span>&nbsp,
+            {% endif %}
+            {% if this.theme.city is not empty %}
+                <span itemprop="addressLocality">{{ this.theme.city }}</br></span>
+            {% endif %}
+            {% if this.theme.address is not empty %}
+                <span itemprop="streetAddress">{{ this.theme.address }}</br></span>
+            {% endif %}
+        </span>
+    {% endif %}
+</div>

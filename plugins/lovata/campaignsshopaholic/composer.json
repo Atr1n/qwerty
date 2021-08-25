@@ -1,0 +1,8 @@
+{
+    "name": "lovata/campaignsshopaholic-plugin",
+    "type": "october-plugin",
+    "description": "Allow you to manage campaigns",
+    "require": {
+        "composer/installers": "~1.0"
+    }
+}

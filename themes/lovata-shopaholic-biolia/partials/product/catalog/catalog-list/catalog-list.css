@@ -1,0 +1,24 @@
+.catalog-list {
+  box-sizing: border-box;
+  width: 100%;
+  margin: 0 0 30px;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(132px, calc(50% - 8px)));
+  grid-gap: 16px;
+  list-style: none;
+
+  @media (width > 768px) {
+    padding: 0;
+    grid-template-columns: repeat(auto-fill, minmax(212px, 1fr));
+    grid-column-gap: 17px;
+    grid-row-gap: 17px;
+    margin-bottom: 65px;
+  }
+}
+
+.catalog-list__empty-list {
+  text-align: center;
+  font-size: var(--font-size-20);
+  font-weight: 500;
+}

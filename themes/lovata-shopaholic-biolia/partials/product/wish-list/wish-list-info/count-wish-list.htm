@@ -1,0 +1,11 @@
+{% if this.theme.has_wish_list %}
+    {% set iProductCount = ProductList.make().active().wishList().count() %}
+    {% if iProductCount > 9 %}
+        {% set iProductCount = '9+' %}
+    {% endif %}
+    <button type="button" {% if iProductCount == 0 %}disabled{% endif %} class="wish-list-info js-wish-list" aria-label="Press to open wish list. Now {{ iProductCount }} product there" aria-controls="wish-list-content">
+        {% if iProductCount > 0 %}
+            <span class="wish-list-info__counter" aria-hidden="true">{{ iProductCount }}</span>
+        {% endif %}
+    </button>
+{% endif %}

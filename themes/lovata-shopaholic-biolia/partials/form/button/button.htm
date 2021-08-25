@@ -1,0 +1,11 @@
+{% set target = blank==true ? 'target="_blank"'  %}
+
+{% if link == true %}
+    <a class="button {{ wrapperClass }}" href="{{ href }}" {{ target }} {{ attr|raw }}>
+        <span class="button__text">{{ text }}</span>
+    </a>
+{% else %}
+    <button class="button {{ wrapperClass }}" type="{{ type|default('button') }}" {{ attr|raw }}>
+        <span class="button__text">{{ text }}</span>
+    </button>
+{% endif %}

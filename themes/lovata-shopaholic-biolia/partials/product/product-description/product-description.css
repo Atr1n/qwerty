@@ -1,0 +1,131 @@
+.product-description {
+  grid-column: 2 / -2;
+  margin-bottom: 90px;
+}
+
+.product-description__details {
+  grid-column: 2 / -2;
+  font-size: var(--font-size-16);
+  line-height: var(--line-height-30);
+  font-weight: 500;
+  color: var(--color-shuttle-gray);
+
+  @media (width > 768px) {
+    grid-column: 8 / -1;
+  }
+}
+
+.product-description__heading {
+  font-size: var(--font-size-20);
+  line-height: var(--line-height-25);
+  color: var(--color-shark);
+  margin-top: 20px;
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.product-description__values {
+  grid-column: 2 / -2;
+  display: flex;
+  flex-wrap: wrap;
+
+  @media (width > 768px) {
+    grid-column: 8 / -1;
+  }
+}
+
+.product-description__heading_values {
+  flex-basis: 100%;
+  margin-bottom: 30px;
+}
+
+.product-description__prop {
+  font-size: var(--font-size-16);
+  line-height: var(--line-height-30);
+  font-weight: 500;
+  color: var(--color-shuttle-gray);
+}
+
+.product-description__prop-slider {
+  position: relative;
+  width: 150px;
+  height: 14px;
+  margin-right: 50px;
+  margin-top: 20px;
+  margin-bottom: 25px;
+
+  &::before {
+    content: '';
+    position: absolute;
+    display: block;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    transform: translateY(-50%);
+    background-color: var(--color-iron);
+  }
+}
+
+.product-description__prop-slider-value {
+  position: absolute;
+  display: block;
+  top: 0;
+  left: 0;
+  width: 14px;
+  height: 14px;
+  transform: translateX(-50%);
+  border-radius: var(--border-radius-50);
+}
+
+.product-description__prop-slider-progress {
+  position: absolute;
+  display: block;
+  top: 50%;
+  left: 0;
+  height: 2px;
+  transform: translateY(-50%);
+}
+
+.product-description__prop-slider_protein .product-description__prop-slider-value,
+.product-description__prop-slider_protein .product-description__prop-slider-progress {
+  background-color: var(--color-anakiwa);
+}
+
+.product-description__prop-slider_protein .product-description__prop-slider-value {
+  left: var(--prop-value, 0);
+}
+
+.product-description__prop-slider_protein .product-description__prop-slider-progress {
+  width: var(--prop-value, 0);
+}
+
+.product-description__prop-slider_fat .product-description__prop-slider-value,
+.product-description__prop-slider_fat .product-description__prop-slider-progress {
+  background-color: var(--color-mona-lisa);
+}
+
+.product-description__prop-slider_fat .product-description__prop-slider-value {
+  left: var(--prop-value, 0);
+}
+
+.product-description__prop-slider_fat .product-description__prop-slider-progress {
+  width: var(--prop-value, 0);
+}
+
+.product-description__prop-slider_carbs .product-description__prop-slider-value,
+.product-description__prop-slider_carbs .product-description__prop-slider-progress {
+  background-color: var(--color-macaroni);
+}
+
+.product-description__prop-slider_carbs .product-description__prop-slider-value {
+  left: var(--prop-value, 0);
+}
+
+.product-description__prop-slider_carbs .product-description__prop-slider-progress {
+  width: var(--prop-value, 0);
+}
+
+.product-description__prop_energy {
+  flex-basis: 100%;
+}

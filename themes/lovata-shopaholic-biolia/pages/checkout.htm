@@ -1,0 +1,38 @@
+title = "Checkout"
+url = "/checkout"
+layout = "main"
+is_hidden = 0
+
+[Cart]
+
+[ShippingTypeList]
+
+[PaymentMethodList]
+
+[MakeOrder]
+mode = "ajax"
+redirect_on = 1
+redirect_page = "success"
+==
+<?php
+function onStart()
+{
+    $this['path_page_js'] = mix('js/checkout.js', 'themes/lovata-shopaholic-biolia/assets');
+    $this['path_page_css'] = mix('css/checkout.css', 'themes/lovata-shopaholic-biolia/assets');
+}
+?>
+==
+{% put styles %}
+    <link rel="stylesheet" href="{{ path_page_css }}">
+{% endput %}
+{% put scripts %}
+    <script src="{{ path_page_js }}"></script>
+{% endput %}
+
+{% set arBreadcrumbs = [
+    {'active': true, 'name': sPageTitle}
+] %}
+{% partial 'navigation/breadcrumbs/breadcrumbs' wrapperClass='cart__breadcrumbs' arBreadcrumbs=arBreadcrumbs %}
+
+{% set sPageTitle = SeoToolbox.getPageTitle()|default('Checkout') %}
+{% partial 'product/cart/cart' sPageTitle=sPageTitle %}

@@ -1,0 +1,61 @@
+{% set sAboutRightBottomBlockBgImage = 'assets/img/nophoto.svg'|theme %}
+{% set sAboutRightTopBlockImage = 'assets/img/nophoto.svg'|theme %}
+{% if this.theme.about_us_right_top_block_image is not empty %}
+{% set sAboutRightTopBlockImage = this.theme.about_us_right_top_block_image|media %}
+{% endif %}
+{% if this.theme.about_us_right_bottom_block_image is not empty %}
+{% set sAboutRightBottomBlockBgImage = this.theme.about_us_right_bottom_block_image|media %}
+{% endif %}
+{% if this.theme.about_us_active %}
+<section class="about-us">
+    <h2 class="section-title about-us__title section-title_center">About US</h2>
+    <div class="about-us__wrapper">
+        {% if this.theme.about_us_main_block_description is not empty %}
+        <div class="about-us__card about-us__card_big">
+            <div class="about-us__card-info">
+                <img src="{{ this.theme.logo_image|media }}" alt="{{ this.theme.logo_alt }}"
+                    title="{{ this.theme.logo_title }}" class="about-us__logo" role="presentation">
+                <p class="about-us__descr">{{ this.theme.about_us_main_block_description }}</p>
+                {% if this.theme.about_us_main_block_url is not empty %}
+                <a href="{{ this.theme.about_us_main_block_url }}" class="about-us__link">
+                    <span class="about-us__link-text">More about us</span>
+                </a>
+                {% endif %}
+            </div>
+        </div>
+        {% endif %}
+        <div class="about-us__inner">
+            {% if this.theme.about_us_right_top_block_title is not empty or this.theme.about_us_right_top_block_description is not empty %}
+            <div class="about-us__card" style="background-image: url({{ sAboutRightTopBlockImage }})">
+                <a {% if this.theme.about_us_right_top_block_url is not empty %}href="{{ this.theme.about_us_right_top_block_url }}"
+                    {% endif%} class="about-us__card__block-link">
+                    {% if this.theme.about_us_right_top_block_title is not empty %}
+                    <b class="about-us__heading">{{ this.theme.about_us_right_top_block_title }}</b>
+                    {% endif%}
+                    {% if this.theme.about_us_right_top_block_description is not empty %}
+                    <p class="about-us__descr">
+                        {{ this.theme.about_us_right_top_block_description }}
+                    </p>
+                    {% endif%}
+                </a>
+            </div>
+            {% endif %}
+            {% if this.theme.about_us_right_bottom_block_title is not empty or this.theme.about_us_right_bottom_block_description is not empty %}
+            <div class="about-us__card" style="background-image: url({{ sAboutRightBottomBlockBgImage }})">
+                <a {% if this.theme.about_us_right_bottom_block_url is not empty %}href="{{ this.theme.about_us_right_bottom_block_url }}"
+                    {% endif%} class="about-us__card__block-link">
+                    {% if this.theme.about_us_right_bottom_block_title is not empty %}
+                    <b class="about-us__heading">{{ this.theme.about_us_right_bottom_block_title }}</b>
+                    {% endif%}
+                    {% if this.theme.about_us_right_bottom_block_description is not empty %}
+                    <p class="about-us__descr">
+                        {{ this.theme.about_us_right_bottom_block_description }}
+                    </p>
+                    {% endif%}
+                </a>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</section>
+{% endif %}

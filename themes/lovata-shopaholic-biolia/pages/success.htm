@@ -1,0 +1,19 @@
+title = "Success"
+url = "/checkout/:slug"
+layout = "main"
+is_hidden = 0
+
+[OrderPage]
+slug = "{{ :slug }}"
+slug_required = 1
+==
+{% set obOrder = OrderPage.get() %}
+
+{% partial 'common/success/success'
+    wrapperClass='success__page'
+    title='Your order #' ~ obOrder.order_number ~ ' is accepted'
+    note='Thank you for shopping at ' ~ this.theme.company_name ~ '!'
+    link='true'
+    href='catalog'|page
+    text='Back To Catalog'
+%}

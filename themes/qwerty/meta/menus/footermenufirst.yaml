@@ -1,0 +1,29 @@
+items:
+    -
+        title: product
+        type: cms-page
+        code: ''
+        reference: product
+        viewBag:
+            isHidden: '0'
+            cssClass: ''
+            isExternal: '0'
+    -
+        title: index
+        type: cms-page
+        code: ''
+        reference: new-page
+        viewBag:
+            isHidden: '0'
+            cssClass: ''
+            isExternal: '0'
+    -
+        title: catalog
+        type: cms-page
+        code: ''
+        reference: catalog
+        viewBag:
+            isHidden: '0'
+            cssClass: ''
+            isExternal: '0'
+name: footerMenuFirst

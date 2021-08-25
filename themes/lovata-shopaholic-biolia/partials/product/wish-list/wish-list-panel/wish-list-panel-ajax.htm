@@ -1,0 +1,12 @@
+{% set obProductList = ProductList.make().active().wishList() %}
+<ul class="wish-list-panel__list">
+    {% if obProductList.isNotEmpty() %}
+        {% for obProduct in obProductList %}
+            {% partial 'product/wish-list/wish-product/wish-product' obProduct=obProduct %}
+        {% endfor %}
+    {% else %}
+        <li class="wish-list-panel__item wish-list-panel__item_none">
+            There are no items in your wish list
+        </li>
+    {% endif %}
+</ul>

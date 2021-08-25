@@ -1,0 +1,49 @@
+{% set obOffer = obProduct.offer.first() %}
+<div class="product-card _shopaholic-product-wrapper" itemscope itemtype="http://schema.org/Product" data-product-id="{{ obProduct.id }}">
+    <a href="{{ obProduct.getPageUrl('product') }}" class="product-card__link">
+        <div class="product-card__img-wrap">
+            {% if obProduct.preview_image is not empty %}
+                <picture class="product-card__img-container">
+                    <source media="(min-width:769px)" data-srcset="{{ obProduct.preview_image.getThumb(172, 172, {'quality': 80, 'extension': 'webp'}) }}" type="image/webp">
+                    <source media="(min-width:769px)" data-srcset="{{ obProduct.preview_image.getThumb(172, 172, {'quality': 80}) }}" type="image/jpeg">
+                    <source media="(max-width:768px)" data-srcset="{{ obProduct.preview_image.getThumb(326, 326, {'quality': 80, 'extension': 'webp'}) }}" type="image/webp">
+                    <source media="(max-width:768px)" data-srcset="{{ obProduct.preview_image.getThumb(326, 326, {'quality': 80}) }}" type="image/jpeg">
+                    <img class="product-card__img js-lazy-load" data-src="{{ obProduct.preview_image.getThumb(334, 334, {'quality': 100}) }}" itemprop="image" alt="{{ obProduct.preview_image.description }}">
+                </picture>
+                {% partial 'common/preloader/preloader' wrapperClass='product-card__img-preloader' %}
+            {% else %}
+            <img class="product-card__img product-card__img_nophoto" src="{{ 'assets/img/nophoto.svg'|theme }}" itemprop="image" alt="No product image">
+            {% endif %}
+        </div>
+        <h2 class="product-card__title" itemprop="name">
+            {{ obProduct.name }}
+        </h2>
+    </a>
+    <div class="product-card__price-wrap" itemscope itemprop="offers" itemtype="http://schema.org/Offer">
+        <span class="product-card__price-currency" itemprop="priceCurrency" content="{{ obOffer.currency_code }}">{{ obOffer.currency }}</span>
+        <span class="product-card__price">
+            <span class="product-card__price-current">{{ obOffer.price }}</span>
+            {% if obOffer.discount_price_value > 0 %}
+                <span class="product-card__price-old" itemprop="price">{{ obOffer.old_price }}</span>
+            {% endif %}
+        </span>
+        {% if obOffer.quantity_in_unit > 0 %}
+        <span class="product-card__portion">&#47;
+            <span class="product-card__portion-value">{{ obOffer.quantity_in_unit > 1 ? obOffer.quantity_in_unit : '' }}</span>
+            <span class="product-card__portion-unit">{{ obOffer.measure_of_unit.name }}</span>
+        </span>
+        {% endif %}
+    </div>
+    {% if obOffer.quantity > 0 %}
+        <input type="hidden" name='offer_id' value={{ obOffer.id }}>
+        <button class="product-card__buy-button product__add-button _shopaholic-cart-add" data-offer-id="{{ obOffer.id }}" type="button">
+            <span class="product-card__buy-button-text">Add</span>
+        </button>
+        {% partial 'common/tooltip/tooltip' wrapperClass="product-card__tooltip product-add__tooltip" text="Product added to cart" %}
+        {% partial 'common/tooltip/tooltip' wrapperClass="product-card__tooltip product-card__tooltip_wishlist product-wish-list__tooltip" text="Product added to wish list" %}
+        {% partial 'common/preloader/preloader' wrapperClass='product-card__preloader-'~obOffer.id %}
+    {% endif %}
+    {% if this.theme.has_wish_list %}
+        {% partial 'product/wish-list/wish-list-add/wish-list-add' obProduct=obProduct %}
+    {% endif %}
+</div>

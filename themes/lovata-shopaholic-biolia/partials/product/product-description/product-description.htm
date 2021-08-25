@@ -1,0 +1,60 @@
+{# @var obProduct \Lovata\Shopaholic\Classes\Item\ProductItem #}
+{# @var obPropertyList \Lovata\PropertiesShopaholic\Classes\Collection\PropertyCollection #}
+{# @var obMainPropertyList \Lovata\PropertiesShopaholic\Classes\Collection\PropertyCollection #}
+{# @var obCommonPropertyList \Lovata\PropertiesShopaholic\Classes\Collection\PropertyCollection #}
+{# @var obProperty \Lovata\PropertiesShopaholic\Classes\Item\PropertyItem #}
+{# @var obGroupList \Lovata\PropertiesShopaholic\Classes\Collection\GroupCollection #}
+{# @var obMainGroup \Lovata\PropertiesShopaholic\Classes\Item\GroupItem #}
+{# @var obCommonGroup \Lovata\PropertiesShopaholic\Classes\Item\GroupItem #}
+
+{# Get product properties #}
+{% set obPropertyList = obProduct.property %}
+
+{# Get main group #}
+{% set obGroupList = obPropertyList.groupList() %}
+{% set obMainGroup = obGroupList.getByCode('main') %}
+{% set obCommonGroup = obGroupList.getByCode('common') %}
+
+{% set obMainPropertyList = obPropertyList.group(obMainGroup.id) %}
+{% set obCommonPropertyList = obPropertyList.group(obCommonGroup.id) %}
+<section class="product-description subgrid">
+    <div class="product-description__details wysiwyg">
+        <h2 class="section-title product-description__heading">Ingredients</h2>
+        <div class="wysiwyg">
+            {{ sPageDescription|raw }}
+        </div>
+    </div>
+    {% if obMainPropertyList.isNotEmpty() or obCommonPropertyList.isNotEmpty() %}
+        <div class="product-description__values">
+            {% if obMainPropertyList.isNotEmpty() %}
+                {% set arClassList = ['_protein', '_fat', '_carbs'] %}
+
+                <h2 class="section-title product-description__heading product-description__heading_values">Nutrition Facts (per 100g)</h2>
+                {% for obProperty in obMainPropertyList %}
+                    {% set sValue = obProperty.property_value.getValueString() %}
+                    <div class="product-description__prop">
+                        <div class="product-description__prop-heading">
+                            <span class="product-description__prop-name">{{ obProperty.name }}: </span>
+                            <span class="product-description__prop-value"
+                                  data-property_one="{{ sValue }}">{{ sValue }}{{ obProperty.measure.name }}</span>
+                        </div>
+                        <div class="product-description__prop-slider product-description__prop-slider{{ arClassList[loop.index % arClassList|length] }}"
+                             role="presentation">
+                            <span class="product-description__prop-slider-value" style="--prop-value: {{ sValue }}%"></span>
+                            <span class="product-description__prop-slider-progress" style="--prop-value: {{ sValue }}%"></span>
+                        </div>
+                    </div>
+                {% endfor %}
+            {% endif %}
+            {% if obCommonPropertyList.isNotEmpty() %}
+                {% for obProperty in obCommonPropertyList if obProperty.hasValue() %}
+                    <div class="product-description__prop product-description__prop_energy">
+                        <span class="product-description__prop-name">{{ obProperty.name }}: </span>
+                        <span
+                            class="product-description__prop-value">{{ obProperty.property_value.getValueString() }}{{ obProperty.measure.name }}</span>
+                    </div>
+                {% endfor %}
+            {% endif %}
+        </div>
+    {% endif %}
+</section>

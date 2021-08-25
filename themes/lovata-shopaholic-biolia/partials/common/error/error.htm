@@ -1,0 +1,14 @@
+<div class="error">
+    <h1 class="error__title">
+        {{ title }}
+    </h1>
+    <span class="error__descr">
+        {{ description|raw }}
+    </span>
+    <span class="error__hint">
+        {{ hint|raw }}
+    </span>
+    <a class="button error__btn error__link-back button_arrow-left button_arrow-left_filled" href="{{ 'index'|page }}">
+        <span class="button__text">{{ buttonText }}</span>
+    </a>
+</div>

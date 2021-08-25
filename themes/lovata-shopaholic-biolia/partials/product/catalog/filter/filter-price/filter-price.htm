@@ -1,0 +1,31 @@
+<div class="filter-price">
+    <div class="filter-price__container">
+        <div class="filter-price__wrapper">
+            <label class="filter-price__label" for="min-price">Min price</label>
+            <input class="filter-price__input"
+                    id="min-price"
+                    type="text"
+                    maxlength="7"
+                    min="{{ min }}"
+                    max="{{ max }}"
+                    placeholder="{{ min }}">
+        </div>
+        <span class="filter-price__separator" aria-hidden="true">to</span>
+        <div class="filter-price__wrapper">
+            <label class="filter-price__label" for="max-price">Max price</label>
+            <input class="filter-price__input"
+                    id="max-price"
+                    type="text"
+                    maxlength="7"
+                    min="{{ min }}"
+                    max="{{ max }}"
+                    placeholder="{{ max }}">
+        </div>
+    </div>
+    {% partial 'form/checkbox/checkbox'
+        wrapperClass = 'filter-price__checkbox'
+        labelText = 'Show only discount products'
+        id='discount_only'
+    %}
+</div>
+

@@ -1,0 +1,55 @@
+.contact__list {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 10px;
+  margin-bottom: 90px;
+  padding: 0;
+
+  @media (width > 768px) {
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 30px;
+  }
+}
+
+.contact__item {
+  display: flex;
+  flex-direction: column;
+  list-style-type: none;
+
+  /* stylelint-disable a11y/content-property-no-static-value */
+
+  /* fixes lists semantic for Safari and VoiceOver */
+
+  &::before {
+    content: '\200B';
+    position: absolute;
+  }
+
+  /* stylelint-enable */
+}
+
+.contact__item-heading {
+  font-size: var(--font-size-20);
+
+  @media (width > 768px) {
+    font-size: var(--font-size-28);
+  }
+}
+
+.contact__item-content {
+  font-size: var(--font-size-16);
+  padding-bottom: 5px;
+  color: var(--color-shark);
+  font-weight: 500;
+
+  @media (width > 768px) {
+    font-size: var(--font-size-18);
+    padding-bottom: 10px;
+  }
+}
+
+.contact__item-hint {
+  font-weight: 500;
+  color: var(--color-shuttle-gray);
+}

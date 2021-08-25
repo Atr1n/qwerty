@@ -1,0 +1,14 @@
+1.0.1:
+    - 'Initialize plugin.'
+1.0.2:
+    - 'Created table webinsane_sitemanager_benefits'
+    - builder_table_create_webinsane_sitemanager_benefits.php
+1.0.3:
+    - 'Updated table webinsane_sitemanager_benefits'
+    - builder_table_update_webinsane_sitemanager_benefits.php
+1.0.4:
+    - 'Created table webinsane_sitemanager_partners'
+    - builder_table_create_webinsane_sitemanager_partners.php
+1.0.5:
+    - 'Created table webinsane_sitemanager_reviews'
+    - builder_table_create_webinsane_sitemanager_reviews.php

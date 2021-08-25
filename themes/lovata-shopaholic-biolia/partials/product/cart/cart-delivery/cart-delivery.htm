@@ -1,0 +1,141 @@
+{% if obShippingTypeList is empty %}
+    {% set obShippingTypeList = ShippingTypeList.make().sort().active() %}
+
+    {% set iActiveShippingTypeID = input('shipping_type_id') %}
+    {% set obActiveShippingType = obShippingTypeList.find(iActiveShippingTypeID) %}
+    {% if obActiveShippingType.isEmpty() %}
+        {% set obActiveShippingType = obShippingTypeList.first() %}
+    {% endif %}
+{% endif %}
+
+<div class="cart__delivery-method cart__section _cart_delivery_wrapper">
+    <h2 class="section-title">
+        1. Delivery Method
+    </h2>
+    {% if obShippingTypeList.isNotEmpty() %}
+        <div class="cart__time-options">
+            {% for obShippingType in obShippingTypeList %}
+                <div class="radio">
+                    <input type="radio"
+                           class="radio__field _shopaholic-order-field"
+                           id="shipping-method-{{ obShippingType.id }}"
+                           name="shipping_type_id"
+                           value="{{ obShippingType.id }}"
+                           {% if obActiveShippingType.id == obShippingType.id %}
+                           checked
+                           {% endif %}
+                           {% if obShippingType.isAvailable() == false %}
+                           disabled
+                           {% endif %}
+                    >
+                    <label for="shipping-method-{{ obShippingType.id }}" class="radio__label">
+                        {{ obShippingType.name}}:&nbsp
+                        {{ obShippingType.currency }}{{ obShippingType.price }}
+                        &nbsp Arrives: {{ obShippingType.preview_text }}
+                    </label>
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+    <p class="cart__delivery-note">
+        {{ this.theme.message_delivery }}
+    </p>
+</div>
+<div class="cart__delivery-info cart__section">
+    <h2 class="section-title">
+        2. Delivery Address
+    </h2>
+    <div class="input cart__delivery-input-wrapper">
+        <label for="first-name" class="input__label">First name</label>
+        <input type="text"
+               id="first-name"
+               name="name"
+               class="input__field cart__delivery-input _shopaholic-order-field"
+               data-was-change="false"
+               data-group="user"
+               data-bouncer-target=".cart__input-error_name"
+               required
+        >
+        <span class="cart__input-error cart__input-error_name"></span>
+    </div>
+    <div class="input cart__delivery-input-wrapper">
+        <label for="last-name" class="input__label">Last Name</label>
+        <input type="text"
+               id="last-name"
+               name="last_name"
+               class="input__field cart__delivery-input _shopaholic-order-field"
+               data-was-change="false"
+               data-group="user"
+               data-bouncer-target=".cart__input-error_lastname"
+               required
+        >
+        <span class="cart__input-error cart__input-error_lastname"></span>
+    </div>
+    <div class="input cart__delivery-input-wrapper">
+        <label for="your-address" class="input__label">Address</label>
+        <input type="text"
+               id="your-address"
+               name="address1"
+               class="input__field cart__delivery-input _shopaholic-order-field"
+               data-was-change="false"
+               data-group="shipping_address"
+               data-bouncer-target=".cart__input-error_address"
+               required
+        >
+        <span class="cart__input-error cart__input-error_address"></span>
+    </div>
+    <div class="cart__fields-wrapper">
+        <div class="input cart__delivery-input-wrapper">
+            <label for="your-country" class="input__label">Country and state</label>
+            <input type="text"
+                   id="your-country"
+                   name="country"
+                   class="input__field cart__delivery-input _shopaholic-order-field"
+                   data-was-change="false"
+                   data-group="shipping_address"
+                   data-bouncer-target=".cart__input-error_country"
+                   required
+            >
+            <span class="cart__input-error cart__input-error_country"></span>
+        </div>
+        <div class="input cart__delivery-input-wrapper">
+            <label for="your-zip" class="input__label">ZIP-code</label>
+            <input type="text"
+                   id="your-zip"
+                   name="postcode"
+                   class="input__field cart__delivery-input _shopaholic-order-field"
+                   data-was-change="false"
+                   data-group="shipping_address"
+                   data-bouncer-target=".cart__input-error_zip"
+                   required
+            >
+            <span class="cart__input-error cart__input-error_zip"></span>
+        </div>
+    </div>
+    <div class="input cart__delivery-input-wrapper">
+        <label for="your-email" class="input__label">Email</label>
+        <input type="email"
+               id="your-email"
+               name="email"
+               class="input__field cart__delivery-input _shopaholic-order-field"
+               data-was-change="false"
+               data-group="user"
+               data-bouncer-target=".cart__input-error_email"
+               required
+        >
+        <span class="cart__input-error cart__input-error_email"></span>
+    </div>
+    <div class="input cart__delivery-input-wrapper">
+        <label for="your-phone" class="input__label">Phone number</label>
+        <input type="text"
+               id="your-phone"
+               name="phone"
+               class="input__field cart__delivery-input _shopaholic-order-field"
+               data-was-change="false"
+               data-group="user"
+               data-bouncer-target=".cart__input-error_phone"
+               required
+        >
+        <span class="cart__input-error cart__input-error_phone"></span>
+    </div>
+</div>

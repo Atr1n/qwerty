@@ -1,0 +1,9 @@
+<h1
+    class="page-title {{ wrapperClass }}"
+    {% if id is not same as(null) %}
+        id="{{ id }}"
+    {% endif %}
+    {{ attr|raw }}
+>
+    {{ text }}
+</h1>

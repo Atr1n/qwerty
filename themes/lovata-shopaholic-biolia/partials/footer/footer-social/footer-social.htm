@@ -1,0 +1,11 @@
+{% if this.theme.social_networks is not empty %}
+    <ul class="footer-social">
+        {% for arSocialMedia in this.theme.social_media %}
+          <li class="footer-social__item">
+              <a href="{{ arSocialMedia.url }}" class="footer-social__link" rel="noopener" target="_blank">
+                  <img class="footer-social__img" src="{{ arSocialMedia.image|media }}" title="{{ arSocialMedia.title }}" alt="{{ arSocialMedia.alt }}">
+              </a>
+          </li>
+        {% endfor %}
+    </ul>
+{% endif %}

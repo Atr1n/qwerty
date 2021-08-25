@@ -1,0 +1,70 @@
+.footer {
+    padding-top: 2rem;
+    border-top: 1px solid #666;
+    @media only screen and (max-width: 568px) {
+        position: relative;
+        top: -100px;
+        padding-top: 0;
+        margin-top: 10rem;
+    }
+    &-content {
+        display: grid;
+        padding-bottom: 2rem;
+        grid-template-columns: repeat(3, 1fr);
+        @media only screen and (max-width: 568px) {
+            grid-template-columns: repeat(1, 1fr);
+        }
+    }
+    &-title {
+        margin-bottom: 2rem;
+        @media only screen and (max-width: 568px) {
+            margin: 2rem 0;
+        }
+        h2 {
+            font-size: 24px;
+        }
+    }
+    &-social {
+        display: flex;
+        &__item {
+            &:not(:first-child) {
+              margin-left: 1rem;
+            }
+            img {
+                width: 40px;
+            }
+        }
+    }
+    &-list {
+        ul {
+            li {
+                padding-bottom: 1.3rem;
+                a {
+                    color: #666;
+                    transition: all ease-in-out .3s;
+                    &:hover {
+                        color: $blue;
+                    }
+                }
+            }
+        }
+    }
+    &-logo {
+        margin-top: 7rem;
+        @media only screen and (max-width: 568px) {
+            margin-top: 2rem;
+        }
+    }
+    &-copy {
+        padding: 2.5rem 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: #000;
+        p {
+            color: #fff;
+            font-size: 15px;
+            text-align: center;
+        }
+    }
+}

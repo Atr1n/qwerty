@@ -1,0 +1,14 @@
+fields:
+    title:
+        label: Заголовок
+        span: auto
+        type: text
+    text:
+        label: Текст
+        span: auto
+        type: text
+    image:
+        label: Картинка
+        mode: image
+        span: auto
+        type: mediafinder

@@ -1,0 +1,17 @@
+<select
+    class="select {{ wrapperClass }}"
+    name="{{ name }}"
+    id="{{ id }}"
+    {% if disabled == true %}
+        disabled
+    {% endif %}
+>
+    {% for i in selectObj %}
+        <option
+            {% if selectTitle == i.text %}
+                selected
+            {% endif  %}
+            value="{{ i.value }}"
+        >{{ i.text }}</option>
+    {% endfor %}
+</select>

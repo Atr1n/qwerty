@@ -1,0 +1,28 @@
+.contact__map-wrapper {
+  grid-column: 1 / -1;
+}
+
+.contact__map {
+  height: 300px;
+
+  @media (width > 768px) {
+    height: 450px;
+  }
+}
+
+.contact__popup {
+  display: flex;
+  flex-direction: column;
+}
+
+.map-popup__title {
+  margin-top: 0;
+  font-size: var(--font-size-16);
+}
+
+.map-popup__info {
+  font-weight: 500;
+  color: var(--color-shuttle-gray);
+  font-size: var(--font-size-14);
+  padding-bottom: 5px;
+}

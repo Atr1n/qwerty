@@ -1,0 +1,79 @@
+/* stylelint-disable max-line-length, declaration-property-value-whitelist, number-no-trailing-zeros */
+
+:root {
+  --grid-template-areas:
+    '. HDR HDR HDR HDR HDR HDR HDR HDR HDR HDR HDR HDR HDR HDR HDR HDR HDR HDR HDR HDR HDR HDR HDR HDR .'
+    '. MAN MAN MAN MAN MAN MAN MAN MAN MAN MAN MAN MAN MAN MAN MAN MAN MAN MAN MAN MAN MAN MAN MAN MAN .'
+    '. FTR FTR FTR FTR FTR FTR FTR FTR FTR FTR FTR FTR FTR FTR FTR FTR FTR FTR FTR FTR FTR FTR FTR FTR .';
+
+  /* typography */
+  --font-family-quicksand: 'Quicksand', 'Arial', sans-serif;
+  --font-display: swap;
+
+  /* font size */
+  --font-size-0: 0;
+  --font-size-10: 10px;
+  --font-size-12: 12px;
+  --font-size-14: 14px;
+  --font-size-16: 16px;
+  --font-size-18: 18px;
+  --font-size-20: 20px;
+  --font-size-22: 22px;
+  --font-size-26: 26px;
+  --font-size-28: 28px;
+  --font-size-40: 40px;
+
+  /* line height */
+  --line-height-normal: normal;
+  --line-height-1: 1;
+  --line-height-20: 20px;
+  --line-height-25: 25px;
+  --line-height-30: 30px;
+  --line-height-40: 40px;
+  --line-height-44: 44px;
+
+  /* color scheme */
+  --color-evening-sea: rgb(5, 94, 62);
+  --color-eucalyptus: rgb(44, 170, 88);
+  --color-pastel-green: rgb(92, 225, 138);
+  --color-submarine: rgb(187, 193, 198);
+  --color-shark: rgb(38, 38, 39);
+  --color-main: #27348b;
+  --color-shuttle-gray: rgb(96, 103, 118);
+  --color-manatee: rgb(147, 152, 163);
+  --color-porcelain: rgb(241, 243, 244);
+  --color-mona-lisa: rgb(255, 141, 141);
+  --color-macaroni: rgb(254, 184, 120);
+  --color-white: rgb(255, 255, 255);
+  --color-mercury: rgb(229, 229, 229);
+  --color-iron: rgb(220, 223, 226);
+  --color-anakiwa: rgb(130, 203, 255);
+  --color-black: rgb(0, 0, 0);
+  --color-transparent: rgba(0, 0, 0, 0);
+  --color-spring-wood: rgb(253, 253, 251);
+  --color-overlay: rgba(0, 0, 0, 0.24);
+  --color-mystic: rgb(228, 234, 237);
+  --color-red: rgb(238, 0, 0);
+
+  /* shadow collection */
+  --shadow-red: 0 3px 23px rgba(255, 37, 37, 0.21);
+  --shadow-blue: 0 3px 23px rgba(141, 207, 255, 0.34);
+  --shadow-black-light: 0 4px 88px rgba(0, 0, 0, 0.07);
+  --shadow-black: 0 5px 27px rgba(0, 0, 0, 0.11);
+  --shadow-black-small: 0 3px 9px rgba(0, 0, 0, 0.11);
+  --shadow-border: inset 0 0 0 2px rgb(220, 223, 226);
+  --shadow-no-border: inset 0 0 0 2px rgba(0, 0, 0, 0);
+
+  /* border-radius collection */
+  --border-radius-0: 0;
+  --border-radius-3: 3px;
+  --border-radius-15: 15px;
+  --border-radius-20: 20px;
+  --border-radius-25: 25px;
+  --border-radius-50: 50px;
+  --border-radius-100: 100px;
+  --border-radius-200: 200px;
+  --border-radius-circle: 50%;
+}
+
+/* stylelint-enable */

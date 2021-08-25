@@ -1,0 +1,5 @@
+title: Benefit
+modelClass: Webinsane\Sitemanager\Models\Benefit
+nameFrom: title
+toolbar:
+    buttons: reorder_toolbar

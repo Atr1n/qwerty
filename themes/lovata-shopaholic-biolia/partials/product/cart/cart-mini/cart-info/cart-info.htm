@@ -1,0 +1,16 @@
+{% set iCountPosition = Cart.get().count() %}
+
+{% if iCountPosition > 9 %}
+    {% set iCountPosition = '9+' %}
+{% endif %}
+
+<button type="button"
+        {% if this.page.id == 'checkout' or iCountPosition == 0 %}disabled{% endif %}
+        class="cart-info js-cart-mini"
+        aria-label="Press to open cart. Now {{ iCountPosition }} {{ choice('product|products', iCountPosition) }} there"
+        aria-controls="cart-mini-content"
+>
+    {% if iCountPosition > 0 %}
+        <span class="cart-info__counter" aria-hidden="true">{{ iCountPosition }}</span>
+    {% endif %}
+</button>

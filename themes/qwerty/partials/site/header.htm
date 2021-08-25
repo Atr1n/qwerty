@@ -1,0 +1,91 @@
+<header class="header">
+			<div class="container">
+				<div class="header-top">
+					<div class="header-top__item">
+						<ul>
+							<li><a href="#">Контакты</a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="header-content">
+					<div class="header-item">
+						<a href="index.html">
+							<img src="{{'assets/img/logo.svg'|theme}}" alt="Qwerty" width="200">
+						</a>
+					</div>
+					<div class="header-item">
+						<div class="header-item__star">
+							<img src="{{'assets/img/избр.svg'|theme}}" alt="Корзина" width="50" height="50">
+						</div>
+						<div class="header-item__basket">
+							<img src="{{'assets/img/корз.svg'|theme}}" alt="Корзина" width="50" height="50">
+						</div>
+					</div>
+				</div>
+
+				<div class="header-wrapper">
+					<div class="header-mobile dn-desktop">
+						<div class="header-mobile-item">
+							<img class="header-mobile-img-1" src="{{'assets/img/header-mob/tovars.svg'|theme}}" alt="Топ" width="30">
+						</div>
+						<div class="header-mobile-item">
+							<img class="header-mobile-img-2" src="{{'assets/img/header-mob/action.svg'|theme}}" alt="Акции" width="30">
+						</div>
+						<div id="btn-nav" class="header-mobile-item header-mobile-logo">
+							<img class="header-mobile-img-3" src="{{'assets/img/header-mob/logo-mobile.svg'|theme}}" alt="Qwerty" width="40">
+						</div>
+						<div data-target="modal" class="header-mobile-item open-btn">
+							<img class="header-mobile-img-4" src="{{'assets/img/header-mob/lk.svg'|theme}}" alt="Личный кабинет" width="30">
+						</div>
+						<div class="header-mobile-item">
+							<img class="header-mobile-img-5" src="{{'assets/img/header-mob/izb.svg'|theme}}" alt="Избранное" width="30">
+						</div>
+					</div>
+					<div class="header-list">
+						<div id="category" class="category header-burger dn-mob">Категории</div>
+						<div id="nav" class="navigation">
+							<div class="navigation__inner">
+								<div class="category-menu">
+									<ul>
+										<li><a href="#">Смартфоны и гаджеты</a></li>
+										<li><a href="#">Ноутбуки и компьютеры</a></li>
+										<li><a href="#">Всё для геймеров</a></li>
+										<li><a href="#">ТВ, аудио, видео</a></li>
+										<li><a href="#">Фототехника и квадрокоптеры</a></li>
+										<li><a href="#">Бытовая техника</a></li>
+										<li><a href="#">Техника для кухни</a></li>
+										<li><a href="#">Красота и здоровье</a></li>
+										<li><a href="#">Спорт, туризм, багаж</a></li>
+										<li><a href="#">Автотовары и транспорт</a></li>
+										<li><a href="#">Детские товары</a></li>
+										<li><a href="#">Товары для дома и сада</a></li>
+									</ul>
+									<div id="btn-close" class="category header-burger dn-mob">Закрыть</div>
+								</div>
+							</div>
+						</div>
+						<div class="overlay">
+							<div class="header-list-item">
+								<nav class="overlayMenu">
+									<ul class="header-list__item">
+									{% for item in mainMenu.menuItems %}
+										<li><a href="{{item.url}}">{{item.title}}</a></li>
+									{% endfor %}
+										<li class="dn-mob"><a href="#">Акции</a></li>
+									</ul>
+								</nav>
+							</div>
+						</div>
+						<div class="header-list-item header-list-search">
+							<input type="search" placeholder="Поиск товаров">
+						</div>
+						<div class="header-list-item dn-mob">
+							<ul>
+								<li><a data-target="modal" class="open-btn" href="#">Войти | Регистрация</a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<div class="navBurger" role="navigation" id="navToggle"></div>
+			</div>
+	</header>

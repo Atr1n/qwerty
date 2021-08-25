@@ -1,0 +1,5 @@
+title: Partner
+modelClass: Webinsane\Sitemanager\Models\Partner
+nameFrom: logo
+toolbar:
+    buttons: reorder_toolbar

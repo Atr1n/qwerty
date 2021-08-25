@@ -1,0 +1,20 @@
+<nav class="breadcrumbs {{ wrapperClass }}" role="navigation">
+    <ul class="breadcrumbs__list" aria-label="breadcrumbs" itemscope itemtype="http://schema.org/BreadcrumbList">
+        <li class="breadcrumbs__item" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+            <span itemprop="name">
+                <a class="breadcrumbs__link" href="{{ 'index'|page }}" itemtype="http://schema.org/Thing" itemprop="item">На главную</a>
+            </span>
+            <meta itemprop="position" content="1" />
+        </li>
+        {% for arItem in arBreadcrumbs %}
+            {% if not arItem.active %}
+                <li class="breadcrumbs__item" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+                        <span itemprop="name">
+                            <a class="breadcrumbs__link" href="{{ arItem.slug }}" itemtype="http://schema.org/Thing" itemprop="item">{{ arItem.name }}</a>
+                        </span>
+                    <meta itemprop="position" content="2" />
+                </li>
+            {% endif %}
+        {% endfor %}
+    </ul>
+</nav>

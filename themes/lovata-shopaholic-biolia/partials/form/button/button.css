@@ -1,0 +1,107 @@
+.button {
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  appearance: none;
+  height: 44px;
+  padding: 0 25px;
+  margin: 0;
+  border: 2px solid var(--color-evening-sea);
+  border-radius: var(--border-radius-50);
+  color: var(--color-spring-wood);
+  font-size: var(--font-size-16);
+  font-weight: 700;
+  text-decoration: none;
+  background-color: var(--color-evening-sea);
+
+  &_disabled {
+    opacity: 0.7;
+  }
+
+  &:hover {
+    cursor: pointer;
+    border: 2px solid var(--color-pastel-green);
+    background-color: var(--color-pastel-green);
+  }
+
+  &:active,
+  &:focus {
+    border: 2px solid var(--color-eucalyptus);
+    background-color: var(--color-eucalyptus);
+  }
+}
+
+.button_ghost {
+  border: 2px solid var(--color-iron);
+  color: var(--color-shuttle-gray);
+  font-weight: 500;
+  background-color: var(--color-white);
+
+  &:hover {
+    border: 2px solid var(--color-shark);
+    color: var(--color-shark);
+    background-color: var(--color-white);
+  }
+
+  &:active,
+  &:focus {
+    border: 2px solid var(--color-eucalyptus);
+    color: var(--color-eucalyptus);
+    background-color: var(--color-white);
+  }
+}
+
+.button__text {
+  color: inherit;
+}
+
+.button_arrow-right .button__text {
+  position: relative;
+  padding-right: 24px;
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: 0;
+    display: block;
+    width: 16px;
+    height: 10px;
+    background-image: url('/themes/lovata-shopaholic-biolia/assets/img/icon/arrow-white.svg');
+    transform: translateY(-50%);
+  }
+}
+
+.button_arrow-left {
+  &_filled {
+    border: 2px solid var(--color-evening-sea);
+    color: var(--color-spring-wood);
+    font-weight: 500;
+    background-color: var(--color-evening-sea);
+  }
+}
+
+.button_arrow-left .button__text {
+  position: relative;
+  padding-left: 24px;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    display: block;
+    width: 16px;
+    height: 10px;
+    background-image: url('/themes/lovata-shopaholic-biolia/assets/img/icon/arrow-dark.svg');
+    transform: translateY(-50%);
+  }
+}
+
+.button_arrow-left_filled .button__text {
+  &::before {
+    background-image: url('/themes/lovata-shopaholic-biolia/assets/img/icon/arrow-white.svg');
+    transform: translateY(-50%) rotate(-180deg);
+  }
+}

@@ -1,0 +1,3 @@
+<a {% if this.page.id != 'index' %} href="{{ 'index'|page }}" {% endif %} class="logo {{ wrapperClass }}">
+    <img class="logo__img" src="{{ this.theme.logo_image|media }}" alt="{{ this.theme.logo_alt }}" title="{{ this.theme.logo_title }}">
+</a>

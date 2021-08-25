@@ -1,0 +1,15 @@
+{% set isFavorite = obProduct.inWishList() %}
+
+{% set label = isFavorite ? 'Remove from wish list' : 'Add to wish list'  %}
+{% set wrapperClass = isFavorite ? '_shopaholic-remove-wish-list-button' : '_shopaholic-add-wish-list-button' %}
+{% set favoriteClass = isFavorite ? 'wish-list-button_favorite' : ''  %}
+
+<button class="wish-list-button {{ wrapperClass }} {{ favoriteClass }}" type="button">
+    <svg class="wish-list-button__icon-not-favorite" aria-hidden="true" focusable="false"  xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+        <path class="wish-list-button__icon-not-favorite-path" d="M20.5169 4.54713C20.0267 4.05664 19.4446 3.66756 18.8039 3.40209C18.1633 3.13663 17.4766 3 16.7831 3C16.0896 3 15.4029 3.13663 14.7622 3.40209C14.1216 3.66756 13.5395 4.05664 13.0492 4.54713L12.0318 5.56458L11.0143 4.54713C10.024 3.55685 8.68094 3.00051 7.28047 3.00051C5.88 3.00051 4.53689 3.55685 3.54661 4.54713C2.55633 5.53741 2 6.88051 2 8.28098C2 9.68145 2.55633 11.0246 3.54661 12.0148L4.56406 13.0323L12.0318 20.5L19.4995 13.0323L20.5169 12.0148C21.0074 11.5246 21.3965 10.9425 21.662 10.3018C21.9274 9.66116 22.0641 8.97447 22.0641 8.28098C22.0641 7.5875 21.9274 6.9008 21.662 6.26014C21.3965 5.61947 21.0074 5.03738 20.5169 4.54713V4.54713Z" stroke="#262627" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+    <svg class="wish-list-button__icon-favorite" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+        <path d="M20.5169 4.54713C20.0267 4.05664 19.4446 3.66756 18.8039 3.40209C18.1633 3.13663 17.4766 3 16.7831 3C16.0896 3 15.4029 3.13663 14.7622 3.40209C14.1216 3.66756 13.5395 4.05664 13.0492 4.54713L12.0318 5.56458L11.0143 4.54713C10.024 3.55685 8.68094 3.00051 7.28047 3.00051C5.88 3.00051 4.53689 3.55685 3.54661 4.54713C2.55633 5.53741 2 6.88051 2 8.28098C2 9.68145 2.55633 11.0246 3.54661 12.0148L4.56406 13.0323L12.0318 20.5L19.4995 13.0323L20.5169 12.0148C21.0074 11.5246 21.3965 10.9425 21.662 10.3018C21.9274 9.66116 22.0641 8.97447 22.0641 8.28098C22.0641 7.5875 21.9274 6.9008 21.662 6.26014C21.3965 5.61947 21.0074 5.03738 20.5169 4.54713Z" fill="#FF8D8D" stroke="#FF8D8D" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+    <span class="visually-hidden">{{ label }}</span>
+</button>

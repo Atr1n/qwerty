@@ -1,0 +1,186 @@
+url = "/catalog/:category?"
+layout = "main"
+title = "Catalog"
+is_hidden = 0
+
+[CategoryPage]
+slug = "{{ :category }}"
+slug_required = 0
+smart_url_check = 0
+has_wildcard = 0
+skip_error = 0
+
+[Pagination]
+count_per_page = 16
+pagination_limit = 5
+active_class = "pagination__link_current"
+button_list = "first,first-more,main,last-more,last"
+first_button_name = "First"
+first_button_limit = 3
+first_button_number = 1
+first-more_button_name = "..."
+first-more_button_limit = 4
+prev_button_name = "Prev"
+prev_button_limit = 1
+prev-more_button_name = "..."
+prev-more_button_limit = 1
+next-more_button_name = "..."
+next-more_button_limit = 1
+next_button_name = "Next"
+next_button_limit = 1
+last-more_button_name = "..."
+last-more_button_limit = 4
+last_button_name = "Last"
+last_button_limit = 3
+last_button_number = 1
+
+[FilterPanel]
+==
+<?php
+function onStart()
+{
+    $this['path_page_js'] = mix('js/catalog.js', 'themes/lovata-shopaholic-biolia/assets');
+}
+function onInit()
+{
+    //Get active category object
+    $obCategoryItem = $this->CategoryPage->get();
+
+    // Get active sorting and page number
+    $sActiveSorting = $this->ProductList->getSorting();
+    
+    $iPage = $this->Pagination->getPageFromRequest();
+
+    $arBreadcrumbs = [];
+    $arBreadcrumbs[] = ['active' => empty($obCategoryItem), 'name' => 'Catalog', 'slug' => \Cms\Classes\Page::url('catalog', ['category' => false])];
+
+    // Get price filter
+    $arPriceFilterValue = explode('|', input('price'));
+    $fMinPriceFilterValue = array_get($arPriceFilterValue, 0);
+    $fMaxPriceFilterValue = array_get($arPriceFilterValue, 1);
+
+    // Get sale filter.
+    $bSaleFilter = (bool) input('sale');
+
+    // Get filter by properties.
+    $arFilterValue = (array) input('property');
+    if (!empty($arFilterValue)) {
+        foreach($arFilterValue as $sKey => &$sValue) {
+            $sValue = explode('|', $sValue);
+        }
+    }
+
+    $arFilterValueWithoutProperty = [];
+
+    // Get product list with filter by category
+    $obCategoryProductList = $this->ProductList->make()->active();
+  
+    if (!empty($obCategoryItem)) {
+        $obCategoryProductList->category($obCategoryItem->id);
+    }
+
+    // Get property list for filter panel.
+    if (empty($obCategoryItem)) {
+        $obProductPropertyList = $this->FilterPanel->getProductPropertyList(['main'], $obCategoryProductList);
+        $obOfferPropertyList = $this->FilterPanel->getOfferPropertyList(['main'], $obCategoryProductList);
+    } else {
+        $obProductPropertyList = $obCategoryItem->product_filter_property;
+        $obOfferPropertyList = $obCategoryItem->offer_filter_property;
+    }
+
+    foreach($obProductPropertyList->getIDList() as $iPropertyID) {
+        $arFilterValueTemp = $arFilterValue;
+        if (isset($arFilterValueTemp[$iPropertyID])) {
+            unset($arFilterValueTemp[$iPropertyID]);
+        }
+
+        $arFilterValueWithoutProperty[$iPropertyID] = $arFilterValueTemp;
+    }
+
+    foreach($obOfferPropertyList->getIDList() as $iPropertyID) {
+        $arFilterValueTemp = $arFilterValue;
+        if (isset($arFilterValueTemp[$iPropertyID])) {
+            unset($arFilterValueTemp[$iPropertyID]);
+        }
+
+        $arFilterValueWithoutProperty[$iPropertyID] = $arFilterValueTemp;
+    }
+
+    // Get product list with filter by price
+    $obFilteredProductList = $obCategoryProductList->copy()->filterByPrice($fMinPriceFilterValue, $fMaxPriceFilterValue);
+
+    if ($bSaleFilter) {
+        $obFilteredProductList->filterByDiscount();
+    }
+
+    $obProductList = $obFilteredProductList->copy()->filterByProperty($arFilterValue, $obProductPropertyList)->filterByProperty($arFilterValue, $obOfferPropertyList);
+
+    // Get product list for page
+    $arProductList = $obProductList->page($iPage, $this->Pagination->getCountPerPage());
+
+    // Get offers with min/max prices
+    $obOfferMinPrice = $obCategoryProductList->getOfferMinPrice();
+    $obOfferMaxPrice = $obCategoryProductList->getOfferMaxPrice();
+
+    // Get max page number
+    $iMaxPage = $this->Pagination->getMaxPage($obProductList->count());
+
+    $this['obFilteredProductList'] = $obFilteredProductList;
+    $this['obProductPropertyList'] = $obProductPropertyList;
+    $this['obOfferPropertyList'] = $obOfferPropertyList;
+    $this['arFilterValue'] = $arFilterValue;
+    $this['arFilterValueWithoutProperty'] = $arFilterValueWithoutProperty;
+
+    $this['iMaxPage'] = $iMaxPage;
+    $this['iPage'] = $iPage;
+    $this['sActiveSorting'] = $sActiveSorting;
+    $this['arProductList'] = $arProductList;
+    $this['obProductList'] = $obProductList;
+    $this['obActiveCategory'] = $obCategoryItem;
+    $this['obCategoryProductList'] = $obCategoryProductList;
+
+    $this['fMinPriceFilterValue'] = $fMinPriceFilterValue;
+    $this['fMaxPriceFilterValue'] = $fMaxPriceFilterValue;
+    $this['obOfferMinPrice'] = $obOfferMinPrice;
+    $this['obOfferMaxPrice'] = $obOfferMaxPrice;
+    $this['bSaleFilter'] = $bSaleFilter;
+
+    $this['arBreadcrumbs'] = $arBreadcrumbs;
+}
+?>
+==
+{% put styles %}
+    <link rel="stylesheet" href="{{ path_page_css }}">
+{% endput %}
+{% put scripts %}
+    <script src="{{ path_page_js }}"></script>
+{% endput %}
+{% put seo_tags %}
+    {% set arSEOParams = {'category': obActiveCategory} %}
+    {% component 'SeoToolbox' model=obActiveCategory params=arSEOParams %}
+{% endput %}
+
+
+<div class="catalog">
+    {% partial 'navigation/breadcrumbs/breadcrumbs' wrapperClass='catalog__breadcrumbs' arBreadcrumbs=arBreadcrumbs %}
+    <h1 class="page-title ">{{ SeoToolbox.getPageTitle(obActiveCategory, arSEOParams)|default(obActiveCategory.isNotEmpty() ? obActiveCategory.name : 'Catalog') }}</h1>
+    <div class="catalog__sidebar">
+        {% partial 'navigation/category/category' %}
+        <section class="filter">
+            {% partial 'product/catalog/filter/filter-ajax' %}
+        </section>
+    </div>
+    <div class="catalog__inner">
+        <div class="filter-bar">
+            {% partial 'product/catalog/filter-bar/filter-bar' %}
+        </div>
+        <div class="catalog__wrapper">
+            {% partial 'product/catalog/catalog-list/catalog-list' %}
+        </div>
+        {% if obActiveCategory.isNotEmpty() %}
+            {{ obActiveCategory.description|raw }}
+        {% else %}
+            {{ SeoToolbox.getPageDescription()|raw }}
+        {% endif %}
+    </div>
+</div>

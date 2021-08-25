@@ -1,0 +1,28 @@
+<ul class="contact__list " itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="{{ this.theme.company_name|default('Company Name') }}">
+    <link itemprop="url" href="{{ 'index'|page }}">
+    <li class="contact__item" itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">
+        <h2 class="contact__item-heading">Address</h2>
+        <span class="contact__item-content" itemprop="streetAddress">{{ this.theme.address }}</span>
+        <span class="contact__item-hint">{{ this.theme.address_description }}</span>
+    </li>
+    <li class="contact__item">
+        <h2 class="contact__item-heading">Phone</h2>
+        <a href="tel: {{ sPhoneValue }}" class="contact__item-content">
+            <span itemprop="telephone">{{ this.theme.phone }}</span>
+        </a>
+        <span class="contact__item-hint">{{ this.theme.phone_description }}</span>
+    </li>
+    <li class="contact__item">
+        <h2 class="contact__item-heading">E-mail</h2>
+        <a href="mailto: {{ this.theme.email }}" class="contact__item-content">
+            <span itemprop="email">{{ this.theme.email }}</span>
+        </a>
+        <span class="contact__item-hint">{{ this.theme.email_description }}</span>
+    </li>
+</ul>
+
+
+
+
+

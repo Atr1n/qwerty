@@ -1,0 +1,12 @@
+.page-title {
+  margin: 0 0 23px;
+  font-size: var(--font-size-26);
+  color: var(--color-shark);
+  text-align: center;
+
+  @media (width > 768px) {
+    margin: 0 0 38px;
+    font-size: var(--font-size-40);
+    text-align: left;
+  }
+}

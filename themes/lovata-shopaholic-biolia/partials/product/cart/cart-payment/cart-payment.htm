@@ -1,0 +1,23 @@
+{% if obPaymentMethodList.isNotEmpty() %}
+    <div class="cart__payment cart__section">
+        <h2 class="section-title">3. Payment method</h2>
+        <ul class="cart__payment-methods">
+            {% for obPaymentMethod in obPaymentMethodList %}
+                {% set checked = loop.index == 1 ? 'true' : '' %}
+                <li class="cart__payment-methods-item">
+                    <div class="radio {{ wrapperClass }} ">
+                        <input type="radio"
+                               class="radio__field _shopaholic-order-field"
+                               id="payment-{{ obPaymentMethod.id }}"
+                               data-group="order"
+                               {% if loop.first %}checked{% endif %}
+                               value="{{ obPaymentMethod.id }}"
+                               name="payment_method_id"
+                        >
+                        <label for="payment-{{ obPaymentMethod.id }}" class="radio__label">{{ obPaymentMethod.name }}</label>
+                    </div>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+{% endif %}

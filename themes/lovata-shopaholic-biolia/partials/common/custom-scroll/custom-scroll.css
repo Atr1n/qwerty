@@ -1,0 +1,18 @@
+.custom-scroll {
+  overflow: auto;
+  scrollbar-color: var(--color-evening-sea) var(--color-white); /* Firefox styling */
+  appearance: none;
+
+  &::-webkit-scrollbar-track {
+    background-color: var(--color-white);
+  }
+
+  &::-webkit-scrollbar {
+    width: 6px;
+    background-color: var(--color-white);
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: var(--color-evening-sea);
+  }
+}

@@ -1,0 +1,128 @@
+items:
+    -
+        title: Shopping
+        nesting: ''
+        type: url
+        url: '#'
+        code: ''
+        reference: ''
+        cmsPage: ''
+        replace: ''
+        viewBag:
+            isHidden: '0'
+            cssClass: ''
+            isExternal: '0'
+        items:
+            -
+                title: Catalog
+                nesting: ''
+                type: cms-page
+                url: ''
+                code: ''
+                reference: catalog
+                cmsPage: ''
+                replace: ''
+                viewBag:
+                    isHidden: '0'
+                    cssClass: ''
+                    isExternal: '0'
+            -
+                title: Payment
+                nesting: '0'
+                type: static-page
+                url: ''
+                code: ''
+                reference: payment
+                cmsPage: ''
+                replace: '0'
+                viewBag:
+                    isHidden: '0'
+                    cssClass: ''
+                    isExternal: '0'
+            -
+                title: Delivery
+                nesting: '0'
+                type: static-page
+                url: ''
+                code: ''
+                reference: delivery
+                cmsPage: ''
+                replace: '0'
+                viewBag:
+                    isHidden: '0'
+                    cssClass: ''
+                    isExternal: '0'
+            -
+                title: Refund
+                nesting: 0
+                type: static-page
+                code: ''
+                reference: returns
+                replace: 0
+                viewBag:
+                    isHidden: '0'
+                    cssClass: ''
+                    isExternal: '0'
+    -
+        title: Service
+        nesting: ''
+        type: url
+        url: '#'
+        code: ''
+        reference: ''
+        cmsPage: ''
+        replace: ''
+        viewBag:
+            isHidden: '0'
+            cssClass: ''
+            isExternal: '0'
+        items:
+            -
+                title: Contact
+                nesting: ''
+                type: cms-page
+                url: ''
+                code: ''
+                reference: contact
+                cmsPage: ''
+                replace: ''
+                viewBag:
+                    isHidden: '0'
+                    cssClass: ''
+                    isExternal: '0'
+            -
+                title: 'About us'
+                nesting: '0'
+                type: static-page
+                url: null
+                code: ''
+                reference: about
+                cmsPage: null
+                replace: '0'
+                viewBag:
+                    isHidden: '0'
+                    cssClass: ''
+                    isExternal: '0'
+            -
+                title: News
+                type: cms-page
+                code: ''
+                reference: news-list
+                viewBag:
+                    isHidden: '0'
+                    cssClass: ''
+                    isExternal: '0'
+            -
+                title: Certification
+                nesting: 0
+                type: static-page
+                url: null
+                code: ''
+                reference: certification
+                cmsPage: null
+                replace: 0
+                viewBag:
+                    isHidden: '0'
+                    cssClass: ''
+                    isExternal: '0'
+name: 'Footer menu'

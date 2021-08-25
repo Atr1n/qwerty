@@ -1,0 +1,38 @@
+<header class="header">
+    <div class="header-wrapper">
+        <div class="header-item">
+            {% if this.page.id != 'index' %}
+            <a href="{{ 'index'|page }}" class="logo header__logo">
+                <img class="logo__img" src="{{ this.theme.logo_image|media }}" alt="{{ this.theme.logo_alt }}" title="{{ this.theme.logo_title }}">
+            </a>
+            {% else %}
+            <span class="logo header__logo">
+                <img class="logo__img" src="{{ this.theme.logo_image|media }}" alt="{{ this.theme.logo_alt }}" title="{{ this.theme.logo_title }}">
+            </span>
+            {% endif %}
+            {% partial 'header/search/search' wrapperClass='header__search' %}
+            {% partial 'header/userbar/userbar' %}
+        </div>
+        <div class="header-item">
+            {% partial 'header/drawer-nav/drawer-nav' %}
+            <a href="{{ 'catalog'|page({'category': false}) }}" class="header__link">
+                <span class="header__link-text">Каталог</span>
+            </a>
+            <a href="{{ 'catalog'|page({'category': false}) }}" class="header__seclink">
+                <span class="header__link-text">Акции</span>
+            </a>
+            <a href="{{ 'catalog'|page({'category': false}) }}" class="header__seclink">
+                <span class="header__link-text">Для партнеров</span>
+            </a>
+            <a href="{{ 'catalog'|page({'category': false}) }}" class="header__seclink">
+                <span class="header__link-text">Новости</span>
+            </a>
+             <div class="input search-panel__input">
+                <input type="text" id="search-panel" name="search" class="input__field search-panel__input-field _shopaholic-search-input" placeholder="Поиск товаров" data-was-change="false" maxlength="100">
+            </div>
+            <a href="{{ 'catalog'|page({'category': false}) }}" class="header__seclink">
+                <span class="header__link-text">Войти | Регистрация</span>
+            </a>
+        </div>
+    </div>
+</header>

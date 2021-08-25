@@ -1,0 +1,19 @@
+{% set arPaginationList = Pagination.get(iPage, obProductList.count()) %}
+{% if arProductList is not empty %}
+    <ul class="catalog-list">
+        {% for obProduct in arProductList %}
+            <li class="catalog-item">
+                {% partial 'product/product-card/product-card' obProduct=obProduct %}
+            </li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p class="catalog-list__empty-list">Товаров не найдено</p>
+{% endif %}
+{% partial 'navigation/pagination/pagination'
+    arPaginationList=arPaginationList
+    iMaxPage=iMaxPage
+    iPage=iPage
+    wrapperClass = 'catalog-pagination'
+    sShopaholicPaginationClass='_shopaholic-pagination'
+%}

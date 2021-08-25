@@ -1,0 +1,20 @@
+.userbar {
+  display: flex;
+  padding: 0;
+  margin: 0;
+  margin-left: 12px;
+  list-style: none;
+
+  @media (width > 768px) {
+    order: 3;
+    margin-left: 0;
+  }
+}
+
+.userbar__item:not(:last-child) {
+  margin-right: 12px;
+
+  @media (width > 768px) {
+    margin-right: 23px;
+  }
+}

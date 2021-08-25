@@ -1,0 +1,15 @@
+<div class="search-panel">
+    <button type="button" class="search-panel__close js-search-popup" arial-label="Close search popup"></button>
+    <span class="search-panel__title">Поиск</span>
+    <form action="#" class="search-panel__form" method='post' role='search' aria-controls="search-result">
+        <div class="input search-panel__input">
+            <label for="search-panel" class="input__label search-panel__label">Поиск</label>
+            <input type="text" id="search-panel" name="search" class="input__field search-panel__input-field _shopaholic-search-input" data-was-change="false" maxlength="100">
+        </div>
+        <button type="button" class="search-panel__button">Search</button>
+        <div class="preloader search-panel__preloader"></div>
+    </form>
+    <ul class="search-panel__result custom-scroll" id="search-result" aria-live="polite">
+        {% partial 'header/search/search-panel/search-panel-result' %}
+    </ul>
+</div>

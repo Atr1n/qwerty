@@ -1,0 +1,63 @@
+{
+  "private": true,
+  "scripts": {
+    "dev": "npm run development",
+    "development": "cross-env NODE_ENV=development LOCAL_DEV=local node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "watch": "npm run development -- --watch",
+    "watch-poll": "npm run watch -- --watch-poll",
+    "hot": "cross-env NODE_ENV=development LOCAL_DEV=local node_modules/webpack-dev-server/bin/webpack-dev-server.js --inline --hot --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "prod": "npm run production",
+    "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --no-progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "lint:css": "./node_modules/.bin/stylelint themes/**/partials/**/*.css themes/**/css/**/*.css --fix",
+    "lint:js": "./node_modules/.bin/eslint themes/**/partials/**/*.js themes/**/js/**/*.js --fix"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint:css && npm run lint:js",
+      "post-merge": "post-npm-install",
+      "post-rebase": "post-npm-install"
+    }
+  },
+  "devDependencies": {
+    "babel-eslint": "^10.0.1",
+    "cross-env": "^5.1",
+    "eslint-config-lovata": "^1.12.1",
+    "eslint-loader": "^2.1.1",
+    "eslint-plugin-vue": "^5.2.2",
+    "husky": "^1.3.1",
+    "laravel-mix": "^4.0.14",
+    "laravel-mix-eslint": "^0.1.3",
+    "laravel-mix-stylelint": "^0.2.0",
+    "mini-css-extract-plugin": "^0.5.0",
+    "post-npm-install": "^1.0.0",
+    "postcss-import": "^12.0.1",
+    "postcss-nested": "^3.0.0",
+    "postcss-preset-env": "^6.6.0",
+    "postcss-url": "^8.0.0",
+    "stylelint-webpack-plugin": "^0.10.5",
+    "vue-template-compiler": "^2.6.9"
+  },
+  "dependencies": {
+    "@lovata/popup-helper": "^1.0.1",
+    "@lovata/shopaholic-cart": "^1.1.1",
+    "@lovata/shopaholic-coupon": "^1.0.0",
+    "@lovata/shopaholic-filter-panel": "^1.0.0",
+    "@lovata/shopaholic-product-list": "^1.0.0",
+    "@lovata/shopaholic-search": "^1.1.3",
+    "@lovata/shopaholic-wish-list": "^1.0.0",
+    "@lovata/url-generation": "^1.0.0",
+    "acorn": "^8.4.1",
+    "autoprefixer": "^9.5.0",
+    "awecssome": "^0.7.0",
+    "choices.js": "^4.1.3",
+    "focus-trap": "^4.0.2",
+    "focus-visible": "^4.1.5",
+    "formbouncerjs": "^1.4.5",
+    "intersection-observer": "^0.5.1",
+    "jquery": "^3.3.1",
+    "load-google-maps-api": "^1.3.2",
+    "social-likes-next": "^1.1.0",
+    "swiper": "^4.5.0",
+    "vanilla-lazyload": "^11.0.5"
+  }
+}

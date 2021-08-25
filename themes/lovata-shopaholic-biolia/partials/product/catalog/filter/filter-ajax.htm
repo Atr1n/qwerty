@@ -1,0 +1,137 @@
+<button type="button" class="filter__btn-close js-filter-bar" aria-label="Close Filter Panel">
+    <span>Filter</span>
+</button>
+<div class="filter__wrapper">
+    <form class="filter__form">
+        <div class="filter__group" role="group" aria-labelledby="ctg-input">
+            <b class="filter__group-legend" id="ctg-input">Price ({{ obOfferMinPrice.currency }})</b>
+            <div class="filter-price">
+                <div class="filter-price__container">
+                    <div class="filter-price__wrapper">
+                        <label class="filter-price__label" for="min-price">Min price</label>
+                        <input class="filter-price__input _shopaholic-price-filter"
+                               id="min-price"
+                               type="text"
+                               maxlength="7"
+                               value="{{ fMinPriceFilterValue }}"
+                               min="{{ obOfferMinPrice.price }}"
+                               max="{{ obOfferMaxPrice.price }}"
+                               placeholder="{{ obOfferMinPrice.price }}"
+                               name="filter-min-price"
+                        >
+                    </div>
+                    <span class="filter-price__separator" aria-hidden="true">to</span>
+                    <div class="filter-price__wrapper">
+                        <label class="filter-price__label" for="max-price">Max price</label>
+                        <input class="filter-price__input _shopaholic-price-filter"
+                               id="max-price"
+                               type="text"
+                               maxlength="7"
+                               value="{{ fMaxPriceFilterValue }}"
+                               min="{{ obOfferMinPrice.price }}"
+                               max="{{ obOfferMaxPrice.price }}"
+                               placeholder="{{ obOfferMaxPrice.price }}"
+                               name="filter-max-price"
+                               {% if bSaleFilter %}checked{% endif %}
+                        >
+                    </div>
+                </div>
+                <div class="checkbox filter-price__checkbox _shopaholic-sale-filter-wrapper" data-filter-type="checkbox">
+                    <input type="checkbox"
+                           class="checkbox__field"
+                           id="discount_only"
+                           name="sale"
+                           value="1"
+                           {% if bSaleFilter %}checked{% endif %}
+                    >
+                    <label for="discount_only" class="checkbox__label">Show only discount products</label>
+                </div>
+            </div>
+        </div>
+        {% for obProperty in obProductPropertyList if obProperty.hasValue() %}
+            {# Radio #}
+            {% if obProperty.filter_type == 'radio' %}
+                <div class="filter__group _shopaholic-filter-wrapper" role="group" data-property-id="{{ obProperty.id }}" data-filter-type="radio" aria-labelledby="ctg-gender-{{ obProperty.id }}">
+                    <b class="filter__group-legend" id="ctg-gender-{{ obProperty.id }}">{{ obProperty.filter_name }}</b>
+                    {% set obPropertyValueList = obProperty.property_value.sort() %}
+                    {% for obValue in obPropertyValueList %}
+                        {% set bChecked = arFilterValue[obProperty.id] is not empty and obValue.slug in arFilterValue[obProperty.id] %}
+                        {% set bDisabled = false %}
+                        {% if bChecked == false and arFilterValueWithoutProperty[obProperty.id] is not empty %}
+                            {% set obProductListTemp = obFilteredProductList.copy().filterByProperty(arFilterValueWithoutProperty[obProperty.id], obProductPropertyList).filterByProperty(arFilterValueWithoutProperty[obProperty.id], obOfferPropertyList) %}
+                            {% set bDisabled = obValue.isDisabled(obProductListTemp) %}
+                        {% endif %}
+                        <div class="radio">
+                            <input type="radio" class="radio__field"
+                                   id="{{ 'gender-f-'~obValue.id~'-'~obProperty.id }}"
+                                   value="{{ obValue.slug }}"
+                                   {% if bChecked %}checked{% endif %} {{ bDisabled ? 'disabled' : '' }}
+                                   name="{{ obProperty.filter_name }}"
+                            >
+                            <label for="{{ 'gender-f-'~obValue.id~'-'~obProperty.id }}" class="radio__label ">{{ obValue.value }}</label>
+                        </div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+
+            {# Select #}
+            {% if obProperty.filter_type == 'select' %}
+                {% set obPropertyValueList = obProperty.property_value.sort() %}
+                <div class="filter__group _shopaholic-filter-wrapper" role="group" data-property-id="{{ obProperty.id }}" data-filter-type="select" aria-labelledby="ctg-select-{{ obProperty.id }}">
+                    <b class="filter__group-legend" id="ctg-select-{{ obProperty.id }}">{{ obProperty.filter_name }}</b>
+                    <select class="select" name="{{ obProperty.filter_name }}">
+                        <option {% if arFilterValue[obProperty.id] is empty %}selected{% endif %} value="">Check your variant</option>
+                        {% for obValue in obPropertyValueList %}
+                            {% set bSelected = arFilterValue[obProperty.id] is not empty and obValue.slug in arFilterValue[obProperty.id] %}
+                            {% set bDisabled = false %}
+                            {% if bSelected == false and arFilterValueWithoutProperty[obProperty.id] is not empty %}
+                                {% set obProductListTemp = obFilteredProductList.copy().filterByProperty(arFilterValueWithoutProperty[obProperty.id], obProductPropertyList).filterByProperty(arFilterValueWithoutProperty[obProperty.id], obOfferPropertyList) %}
+                                {% set bDisabled = obValue.isDisabled(obProductListTemp) %}
+                            {% endif %}
+                            <option value="{{ obValue.slug }}" {% if bSelected %}selected{% endif %} {{ bDisabled ? 'disabled' : '' }}>
+                                {{ obValue.value }}
+                            </option>
+                        {% endfor %}
+                    </select>
+                </div>
+            {% endif %}
+
+            {# Checkbox #}
+            {% if obProperty.filter_type == 'checkbox' %}
+                <div class="filter__group _shopaholic-filter-wrapper" data-filter-type="checkbox" role="group" data-property-id="{{ obProperty.id }}" aria-labelledby="ctg-checkbox-{{ obProperty.id }}">
+                    <b class="filter__group-legend" id="ctg-checkbox-{{ obProperty.id }}">{{ obProperty.filter_name }}</b>
+                    {% set obPropertyValueList = obProperty.property_value.sort() %}
+                    {% for obValue in obPropertyValueList %}
+                        {% set bChecked = arFilterValue[obProperty.id] is not empty and obValue.slug in arFilterValue[obProperty.id] %}
+                        {% set bDisabled = false %}
+                        {% if bChecked == false and arFilterValueWithoutProperty[obProperty.id] is not empty %}
+                            {% set obProductListTemp = obFilteredProductList.copy().filterByProperty(arFilterValueWithoutProperty[obProperty.id], obProductPropertyList).filterByProperty(arFilterValueWithoutProperty[obProperty.id], obOfferPropertyList) %}
+                            {% set bDisabled = obValue.isDisabled(obProductListTemp) %}
+                        {% endif %}
+                        <div class="checkbox filter__checkbox">
+                            <input type="checkbox"
+                                   class="checkbox__field"
+                                   id="{{ 'checkbox-'~obValue.id~'-'~obProperty.id }}"
+                                   name="{{ 'property['~obProperty.id~'][]' }}"
+                                   value="{{ obValue.slug }}"
+                                   {{ bChecked ? 'checked' : '' }}
+                                   {{ bDisabled ? 'disabled' : '' }}
+                            >
+                            <label for="{{ 'checkbox-'~obValue.id~'-'~obProperty.id }}" class="checkbox__label filter-checkbox__label">{{ obValue.value }}</label>
+                        </div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        {% endfor %}
+        <div class="filter__btn-section">
+            {% set iProductCount = obProductList.count() %}
+            <button class="button filter__submit" type="button">
+                <span class="button__text">Show {{ iProductCount }} {{ choice('product|products', iProductCount) }}</span>
+            </button>
+            <button type="reset" class="filter__reset">
+                <span class="filter__reset-text">Clear Filter</span>
+            </button>
+        </div>
+    </form>
+</div>
+

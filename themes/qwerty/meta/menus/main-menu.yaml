@@ -1,0 +1,37 @@
+items:
+    -
+        title: product
+        type: cms-page
+        code: ''
+        reference: product
+        viewBag:
+            isHidden: '0'
+            cssClass: dn-mob
+            isExternal: '0'
+    -
+        title: index
+        nesting: null
+        type: cms-page
+        url: null
+        code: ''
+        reference: new-page
+        cmsPage: null
+        replace: null
+        viewBag:
+            isHidden: '0'
+            cssClass: ''
+            isExternal: '0'
+    -
+        title: catalog
+        nesting: null
+        type: cms-page
+        url: null
+        code: ''
+        reference: catalog
+        cmsPage: null
+        replace: null
+        viewBag:
+            isHidden: '0'
+            cssClass: ''
+            isExternal: '0'
+name: main-menu

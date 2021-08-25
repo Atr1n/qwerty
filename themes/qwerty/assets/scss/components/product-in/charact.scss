@@ -1,0 +1,30 @@
+.charact {
+    &-item {
+        margin-bottom: 2rem;
+        &__title {
+            margin-bottom: 1rem;
+            h2 {
+                font-weight: bold;
+                font-size: 24px;
+                color: $blue;
+                @media only screen and (max-width: 568px) {
+                  font-size: 18px;
+                }
+            }
+        }
+        &__list {
+            ul {
+                display: flex;
+                margin-bottom: 1rem;
+                justify-content: space-between;
+                @media only screen and (max-width: 568px) {
+                    display: grid;
+                }
+                li {
+                    text-decoration: underline;
+                    color: $blue;
+                }
+            }
+        }
+    }
+}

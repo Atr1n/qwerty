@@ -1,0 +1,24 @@
+{% set arArticleList = ArticleList.make().sort('publish|desc').published().take(this.theme.index_article_count|default(4)) %}
+{% if arArticleList is not empty %}
+    <section class="article-slider">
+        <h2 class="section-title article-slider__title section-title_center">News</h2>
+        <div class="article-slider__container swiper-container">
+            <ul class="article-slider__wrapper swiper-wrapper">
+                {% for obArticle in arArticleList %}
+                    <li class="article-slider__item swiper-slide">
+                        {% partial 'article/article-card/article-card'
+                            obArticle=obArticle
+                            sWidth=300
+                            sHeight=190
+                        %}
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+        <div class="article-slider__pagination-wrap">
+            <button class="article-slider__button article-slider__button_prev"></button>
+            <div class="article-slider__pagination"></div>
+            <button class="article-slider__button article-slider__button_next"></button>
+        </div>
+    </section>
+{% endif %}

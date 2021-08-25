@@ -1,0 +1,18 @@
+.form__textarea {
+  position: relative;
+}
+
+.form__textarea > .form__input-error {
+  top: 100%;
+}
+
+.form__textarea-field {
+  padding: 10px;
+  width: 100%;
+  min-height: 80px;
+  resize: none;
+
+  @media (width > 768px) {
+    min-height: 100px;
+  }
+}

@@ -1,0 +1,8 @@
+<?php
+
+/** @var \Cms\Models\ThemeData $formModel */
+
+//Add category fields (index page)
+$formModel->addDynamicMethod('getCategoryOptions', function () {
+    return \Lovata\Shopaholic\Models\Category::lists('name', 'id');
+});

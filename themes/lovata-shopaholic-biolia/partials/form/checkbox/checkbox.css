@@ -1,0 +1,86 @@
+.checkbox {
+  box-sizing: border-box;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.checkbox__field {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin-left: -1px;
+  opacity: 0;
+  overflow: hidden;
+}
+
+.checkbox__label {
+  box-sizing: border-box;
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  padding-left: 30px;
+  color: var(--color-shark);
+  font-weight: 500;
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  &::before {
+    content: '';
+    box-sizing: border-box;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    display: block;
+    width: 20px;
+    height: 20px;
+    border: 2px solid var(--color-submarine);
+    border-radius: var(--border-radius-3);
+    transform: translateY(-50%);
+  }
+}
+
+.checkbox__field:focus + .checkbox__label {
+  outline: 2px solid var(--color-anakiwa);
+  outline-offset: 2px;
+}
+
+.checkbox__field:checked + .checkbox__label {
+  &::before {
+    border-color: var(--color-evening-sea);
+    background-color: var(--color-evening-sea);
+    background-image: url('/themes/lovata-shopaholic-biolia/assets/img/icon/check.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 11px;
+    transition: border-color 0.2s ease-out, background-color 0.2s ease-out;
+  }
+}
+
+/* TODO: Add disabled status */
+
+.checkbox__field:disabled + .checkbox__label {
+  color: var(--color-manatee);
+
+  &::before {
+    border-color: var(--color-manatee);
+    background-color: var(--color-manatee);
+    opacity: 1;
+  }
+}
+
+/* stylelint-disable selector-max-specificity */
+
+.checkbox__field:checked:disabled + .checkbox__label {
+  color: var(--color-manatee);
+
+  &::before {
+    border-color: var(--color-manatee);
+    background-color: var(--color-manatee);
+    opacity: 1;
+  }
+}
+
+/* stylelint-enable */

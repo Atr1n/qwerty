@@ -1,0 +1,26 @@
+.cart__payment {
+
+  @media (width > 768px) {
+    margin-bottom: 45px;
+  }
+}
+
+.cart__payment-methods {
+  margin: 0;
+  padding: 0;
+}
+
+.cart__payment-methods-item {
+  list-style-type: none;
+
+  /* stylelint-disable a11y/content-property-no-static-value */
+
+  /* fixes lists semantic for Safari and VoiceOver */
+
+  &::before {
+    content: '\200B';
+    position: absolute;
+  }
+
+  /* stylelint-enable */
+}

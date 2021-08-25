@@ -1,0 +1,9 @@
+{
+  "extends": "eslint-config-lovata/.stylelintrc",
+  "rules": {
+    "plugin/no-low-performance-animation-properties": null,
+    "a11y/no-outline-none": null,
+    "a11y/media-prefers-reduced-motion": null,
+    "a11y/selector-pseudo-class-focus": null
+  }
+}

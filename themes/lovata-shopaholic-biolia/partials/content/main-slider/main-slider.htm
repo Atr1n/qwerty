@@ -1,0 +1,25 @@
+{% if this.theme.index_gallery is not empty %}
+    <div class="main-slider swiper-container">
+        <ul class="main-slider__wrapper swiper-wrapper">
+            {% for arImage in this.theme.index_gallery %}
+                <li class="main-slider__item swiper-slide">
+                    <a {% if arImage.url is not empty %}href="{{ arImage.url }}"{% endif %} class="main-slider__link">
+                        <picture class="main-slider__image-wrap">
+                            <source media="(max-width:768px)" data-srcset="{{ arImage.image_mobile|media|resize(360, 512, {'quantity': 100, 'extension': 'webp'}) }}" type="image/webp">
+                            <source media="(max-width:768px)" data-srcset="{{ arImage.image_mobile|media|resize(360, 512, {'quality': 100}) }}" type="image/jpeg">
+                            <source media="(min-width:769px)" data-srcset="{{ arImage.image_desktop|media|resize(575, 310, {'quantity': 100, 'extension': 'webp'}) }}" type="image/webp">
+                            <source media="(min-width:769px)" data-srcset="{{ arImage.image_desktop|media|resize(575, 310, {'quality': 100}) }}" type="image/jpeg">
+                            <img class="main-slider__image js-lazy-load" data-src="{{ arImage.image_desktop|media|resize(575, 310, {'quality': 100}) }}" alt="{{ arImage.alt }}">
+                        </picture>
+                        <div class="preloader main-slider__image-preloader"></div>
+                    </a>
+                </li>
+            {% endfor %}
+        </ul>
+        <div class="main-slider__pagination-wrap">
+            <button class="main-slider__button main-slider__button_prev"></button>
+            <div class="main-slider__pagination"></div>
+            <button class="main-slider__button main-slider__button_next"></button>
+        </div>
+    </div>
+{% endif %}

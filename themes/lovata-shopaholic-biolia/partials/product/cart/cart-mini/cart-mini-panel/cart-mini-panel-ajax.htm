@@ -1,0 +1,18 @@
+{# @var obCartPositionList \Lovata\OrdersShopaholic\Classes\Collection\CartPositionCollection #}
+
+{% if obCartPositionList is empty %}
+    {% set obCartPositionList = Cart.get() %}
+{% endif %}
+<ul class="cart-mini-panel__list">
+    {% if obCartPositionList.isNotEmpty() %}
+        {% for obCartPosition in obCartPositionList %}
+            <li class="cart-mini-panel__item js-cart-item _shopaholic-product-wrapper" data-position-id="{{ obCartPosition.id }}">
+                {% partial 'product/cart/cart-product/cart-product' obCartPosition=obCartPosition %}
+            </li>
+        {% endfor %}
+    {% else %}
+        <li class="cart-mini-panel__item cart-mini-panel__item_none">
+            There are no items in your cart
+        </li>
+    {% endif %}
+</ul>

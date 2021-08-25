@@ -1,0 +1,16 @@
+{% set sSearch = input('search') %}
+{% set arProductList = ProductList.make().active().search(sSearch).take(10) %}
+{% if arProductList is not empty %}
+    {% for obProduct in arProductList %}
+        <li class="search-panel__result-item">
+            <a href="{{ obProduct.getPageUrl('product') }}" class="search-panel__result-link">{{ obProduct.name }}</a>
+        </li>
+    {% endfor %}
+{% elseif sSearch is not empty %}
+    <li class="search-panel__result-item">
+        <span class="search-panel__result-value">
+            No results found for
+            <span class="search-panel__result-search-text">"{{ sSearch }}"</span>
+        </span>
+    </li>
+{% endif %}

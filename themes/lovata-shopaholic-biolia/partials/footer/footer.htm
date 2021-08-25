@@ -1,0 +1,15 @@
+<footer class="footer">
+    <div class="footer__wrapper">
+        {% partial 'footer/footer-nav/footer-nav' %}
+        {% if this.page.id != 'index' %}
+            <a href="{{ 'index'|page }}" class="logo footer__logo">
+                <img class="logo__img" src="{{ this.theme.logo_image|media }}" alt="{{ this.theme.logo_alt }}" title="{{ this.theme.logo_title }}">
+            </a>
+        {% else %}
+            <span href="{{ 'index'|page }}" class="logo footer__logo">
+                <img class="logo__img" src="{{ this.theme.logo_image|media }}" alt="{{ this.theme.logo_alt }}" title="{{ this.theme.logo_title }}">
+            </span>
+        {% endif %}
+        {% partial 'footer/footer-info/footer-info' %}
+    </div>
+</footer>

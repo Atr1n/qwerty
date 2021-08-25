@@ -1,0 +1,33 @@
+.display-none {
+    display: none;
+}
+.productin {
+    &-content {
+        display: grid;
+        align-items: flex-start;
+        grid-template-columns: 300px 1fr;
+        grid-gap: 4rem;
+        @media only screen and (max-width: 568px) {
+            grid-template-columns: repeat(1,1fr);
+            grid-gap: 1rem;
+        }
+    }
+    &-item {
+        padding: 1rem 2rem;
+        border-radius: 25px;
+        box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+        background: #fff;
+        &__list {
+            ul {
+                li {
+                    display: flex;
+                    margin-bottom: 0.5rem;
+                    justify-content: space-between;
+                    a {
+                        color: $blue;
+                    }
+                }
+            }
+        }
+    }
+}

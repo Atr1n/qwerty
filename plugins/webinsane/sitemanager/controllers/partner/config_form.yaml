@@ -1,0 +1,10 @@
+name: Partner
+form: $/webinsane/sitemanager/models/partner/fields.yaml
+modelClass: Webinsane\Sitemanager\Models\Partner
+defaultRedirect: webinsane/sitemanager/partner
+create:
+    redirect: 'webinsane/sitemanager/partner/update/:id'
+    redirectClose: webinsane/sitemanager/partner
+update:
+    redirect: webinsane/sitemanager/partner
+    redirectClose: webinsane/sitemanager/partner

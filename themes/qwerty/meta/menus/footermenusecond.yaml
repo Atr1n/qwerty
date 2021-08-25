@@ -1,0 +1,20 @@
+items:
+    -
+        title: catalog
+        type: cms-page
+        code: ''
+        reference: catalog
+        viewBag:
+            isHidden: '0'
+            cssClass: ''
+            isExternal: '0'
+    -
+        title: index
+        type: cms-page
+        code: ''
+        reference: new-page
+        viewBag:
+            isHidden: '0'
+            cssClass: ''
+            isExternal: '0'
+name: footerMenuSecond

@@ -1,0 +1,83 @@
+.filter-checked {
+  display: none;
+
+  @media (width > 768px) {
+    display: flex;
+    align-items: flex-start;
+  }
+}
+
+.filter-checked__list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.filter-checked__item {
+  display: flex;
+  align-items: center;
+  margin-right: 20px;
+  min-height: 37px;
+  max-height: 37px;
+  background-color: var(--color-primary-light);
+  padding-left: 17px;
+  padding-right: 13px;
+
+  &:last-child {
+    margin-right: 33px;
+  }
+}
+
+.filter-checked__value {
+  font-size: var(--font-size-16);
+  color: var(--color-shuttle-gray);
+  font-weight: 500;
+
+  @media (width > 768px) {
+    margin-right: 5px;
+  }
+}
+
+.filter-checked__remove {
+  border: none;
+  width: 18px;
+  height: 18px;
+  padding: 0;
+  margin: 0;
+  opacity: 0.5;
+  background-color: var(--color-transparent);
+  background-image: url('/themes/lovata-shopaholic-biolia/assets/img/icon/cross.svg');
+  background-size: 9px 9px;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  &:hover {
+    cursor: pointer;
+    opacity: 1;
+    transition: opacity 0.2s ease-out;
+  }
+}
+
+.filter-checked__reset {
+  margin-left: auto;
+  font-size: var(--font-size-16);
+  font-weight: 700;
+  padding: 0;
+  border: none;
+  background-color: var(--color-transparent);
+  color: var(--color-shuttle-gray);
+  width: auto;
+  border-bottom: 2px dashed var(--color-shuttle-gray);
+
+  @media (width > 768px) {
+    margin-top: 8px;
+
+    &:hover {
+      cursor: pointer;
+      color: var(--color-shark);
+      transition: opacity 0.2s ease-out;
+    }
+  }
+}

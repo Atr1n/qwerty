@@ -1,0 +1,26 @@
+[staticMenu mainMenu]
+code = "main-menu"
+
+[staticMenu footerMenuFirst]
+code = "footermenufirst"
+
+[staticMenu footerMenuSecond]
+code = "footermenusecond"
+==
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">    
+    <title>Product In</title>
+    <link rel="stylesheet" href="{{['assets/scss/main.scss']|theme}}">
+    <link rel="stylesheet" href="{{'assets/js/index.js'|theme}}">
+</head>
+<body>
+{% partial 'site/header' mainMenu = mainMenu %}
+    {% page %}
+{% partial "site/footer" %}
+{% partial "modals/main-modal" %}
+</body>
+</html>

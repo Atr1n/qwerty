@@ -1,0 +1,85 @@
+.header-mobile {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(5,1fr);
+    z-index: 100;
+    background: $blue;
+    &-item {
+        display: grid;
+        align-items: center;
+        p {
+            font-size: 10px;
+            font-weight: 400;
+            color: #fff;
+        }
+        &:nth-child(1)::after {
+            position: absolute;
+            bottom: 5px;
+            left: 93px;
+            content: 'Акции';
+            font-size: 10px;
+            color: #fff;
+        }
+        &:nth-child(2)::after {
+            position: absolute;
+            bottom: 5px;
+            left: 20px;
+            content: 'Топ';
+            font-size: 10px;
+            color: #fff;
+        }
+        &:nth-child(4)::after {
+            position: absolute;
+            right: 83px;
+            bottom: 5px;
+            content: 'Личный кабинет';
+            font-size: 10px;
+            color: #fff;
+        }
+        &:nth-child(5)::after {
+            position: absolute;
+            right: 12px;
+            bottom: 5px;
+            content: 'Избранное';
+            font-size: 10px;
+            color: #fff;
+        }
+    }
+    &-img-1 {
+        position: relative;
+        top: -10px;
+        left: 14px;
+    }
+    &-img-2 {
+        position: relative;
+        left: 20px;
+        top: -8px;
+    }
+    &-img-4 {
+        position: relative;
+        top: -8px;
+        left: 14px;
+    }
+    &-img-5 {
+        position: relative;
+        top: -8px;
+        left: 23px;
+    }
+    &-logo {
+        position: relative;
+        top: -30px;
+        display: flex;
+        padding: 12px;
+        justify-content: center;
+        align-items: center;
+        width: 60px;
+        height: 60px;
+        background: $blue;
+        border: 2px solid $yellow;
+        border-radius: 50%;
+        cursor: pointer;
+    }
+}

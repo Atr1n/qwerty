@@ -1,0 +1,45 @@
+{# TODO: Set a unique ID for a correct work of partial #}
+
+{% set labelStateClass = labelStateClass is not empty ? 'input__label_elevated' : '' %}
+<div class="input {{ wrapperClass }}">
+    <label for="{{ id }}" class="input__label {{ labelStateClass }} {{ labelClass }}">{{ labelText }}</label>
+    <input
+        type="{{ type|default('text') }}"
+        id="{{ id }}"
+        name="{{ name }}"
+        class="input__field {{ inputClass }}"
+        data-was-change="false"
+        {{ required }}
+        {% if value is not same as(null) %}
+            value="{{ value }}"
+        {% endif %}
+        {% if disabled == true %}
+            disabled="disabled"
+        {% endif %}
+        {% if min is not same as(null) %}
+            min="{{ min }}"
+        {% endif %}
+        {% if max is not same as(null) %}
+            max="{{ max }}"
+        {% endif %}
+        {% if maxLength is not same as(null) %}
+            maxlength="{{ maxLength }}"
+        {% endif %}
+        {% if minLength is not same as(null) %}
+            minlength="{{ minLength }}"
+        {% endif %}
+        {% if pattern is not same as(null) %}
+            pattern="{{ pattern }}"
+        {% endif %}
+        {% if validationErrorSelector is not same as(null) %}
+            data-bouncer-target=".{{ validationErrorSelector }}"
+        {% endif %}
+        {% if customErrorMessage is not same as(null) %}
+            data-bouncer-message="{{ customErrorMessage }}"
+        {% endif %}
+        {{ attribute|raw }}
+    >
+    {% if validationErrorSelector is not same as(null) %}
+        <span class="{{ validationErrorSelector }}"></span>
+    {% endif %}
+</div>

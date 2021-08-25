@@ -1,0 +1,8 @@
+{
+    "name": "lovata/labelsshopaholic-plugin",
+    "type": "october-plugin",
+    "description": "Allow you to create product labels",
+    "require": {
+        "composer/installers": "~1.0"
+    }
+}

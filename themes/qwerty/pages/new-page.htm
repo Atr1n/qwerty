@@ -1,0 +1,95 @@
+url = "/"
+layout = "default"
+title = "index"
+==
+<?php
+use Webinsane\Sitemanager\Models\Review as Review;
+use Webinsane\Sitemanager\Models\Benefit as Benefit;
+use Webinsane\Sitemanager\Models\Partner as Partner;
+function onInit() {
+    $this ['benefits']=Benefit::all();
+    $this ['partners']=Partner::all();
+    $this ['reviews']=Review::all();
+}
+?>
+==
+{% partial 'main-page/slider' %}
+
+		<section class="services">
+			<div class="container">
+				<div class="services-content">
+					{% for benefit in benefits %}
+					<div class="services-item">
+						<div class="services-img">
+							<img src="{{benefit.image|media}}" alt="cart" width="60" height="60">
+						</div>
+						<div class="services-desc">
+							<h3><strong>{{benefit.title}}</strong> <br> {{benefit.text}}</h3>
+						</div>
+					</div>
+					{% endfor %}
+				</div>
+			</div>
+		</section>
+
+		<!-- FOR SLIKIKLAID  -->
+
+		<section class="products">
+			<div class="container">
+				<div class="products-title">
+					<h3>Новый продукт | </h3>
+					<h3>Популярный | </h3>
+					<h3>Популярный </h3>
+				</div>
+				<div class="products-content">
+					{% for i in 1..8 %}
+					{% partial 'main-page/product' %}
+					{% endfor %}				
+				</div>
+			</div>
+		</section>
+
+		<section class="brand">
+			<div class="container">
+				<div class="brand-title">
+					<h2>Наши партнеры</h2>
+				</div>
+				{% partial 'main-page/partners' %}
+			</div>
+		</section>
+
+		<section class="comments">
+			<div class="container">
+				<div class="comments-title">
+					<h2>Наши отзывы</h2>
+				</div>
+				<div class="comments-content">
+					{% for review in reviews %}
+					<div class="comments-item">
+						<div class="comments-item__img">
+							<img src="{{review.photo|media}}" alt="клиент">
+						</div>
+						<div class="comments-item__title">
+							<h3>{{review.name}}</h3>
+						</div>
+						<div class="comments-item__text">
+							<p>{{review.text}}</p>
+						</div>
+					</div>
+					{% endfor %}
+				</div>
+			</div>
+		</section>
+
+		<section class="arrivals">
+			<div class="container">
+				<div class="arrivals-title">
+					<h2>Новое поступление</h2>
+				</div>
+				<div class="products-content">
+					{% for i in 1..8 %}
+					{% partial 'main-page/product' %}
+					{% endfor %}
+				</div>
+			</div>
+		</section>

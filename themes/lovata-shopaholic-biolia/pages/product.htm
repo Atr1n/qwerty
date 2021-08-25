@@ -1,0 +1,64 @@
+title = "Product"
+url = "catalog/:category/:product"
+layout = "main"
+is_hidden = 0
+
+[CategoryPage]
+slug = "{{ :category }}"
+slug_required = 1
+smart_url_check = 0
+has_wildcard = 0
+skip_error = 0
+
+[ProductPage]
+slug = "{{ :product }}"
+slug_required = 1
+smart_url_check = 1
+has_wildcard = 0
+skip_error = 0
+==
+<?php
+function onStart()
+{
+    $this['path_page_js'] = mix('js/product.js', 'themes/lovata-shopaholic-biolia/assets');
+    $this['path_page_css'] = mix('css/product.css', 'themes/lovata-shopaholic-biolia/assets');
+}
+function onInit()
+{
+    $obProductItem = $this->ProductPage->get();
+    $obCategoryItem = $this->CategoryPage->get();
+
+    $arBreadcrumbs = [];
+    $arBreadcrumbs[] = ['active' => false, 'name' => 'Catalog', 'slug' => \Cms\Classes\Page::url('catalog', ['category' => false])];
+    $arBreadcrumbs[] = ['active' => false, 'name' => $obCategoryItem->name, 'slug' => $obCategoryItem->getPageUrl('catalog')];
+
+    //Get offer list
+    $obOfferList = $obProductItem->offer;
+    $obFirstOfferItem = $obOfferList->first();
+
+    $this['obOffer'] = $obFirstOfferItem;
+    $this['obOfferList'] = $obOfferList;
+
+    $this['arBreadcrumbs'] = $arBreadcrumbs;
+    $this['obActiveCategory'] = $obCategoryItem;
+    $this['obProduct'] = $obProductItem;
+}
+?>
+==
+{% put styles %}
+    <link rel="stylesheet" href="{{ path_page_css }}">
+{% endput %}
+{% put scripts %}
+    <script src="{{ path_page_js }}"></script>
+{% endput %}
+
+{% set arSEOParams = {'product': obProduct} %}
+{% put seo_tags %}
+    {% component 'SeoToolbox' model=obProduct params=arSEOParams %}
+{% endput %}
+
+{% set sPageTitle = SeoToolbox.getPageTitle(obProduct, arSEOParams)|default(obProduct.name) %}
+{% set sPageDescription = SeoToolbox.getPageDescription(obProduct, arSEOParams)|default(obProduct.description) %}
+{% partial 'navigation/breadcrumbs/breadcrumbs' wrapperClass='product__breadcrumbs' arBreadcrumbs=arBreadcrumbs  %}
+{% partial 'product/product-info/product-info' obProduct=obProduct sPageTitle=sPageTitle %}
+{% partial 'product/product-description/product-description' obProduct=obProduct sPageDescription=sPageDescription %}

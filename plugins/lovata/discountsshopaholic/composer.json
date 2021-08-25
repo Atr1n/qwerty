@@ -1,0 +1,8 @@
+{
+    "name": "lovata/discountsshopaholic-plugin",
+    "type": "october-plugin",
+    "description": "Allow you to create discounts and recalculate your catalog prices",
+    "require": {
+        "composer/installers": "~1.0"
+    }
+}
