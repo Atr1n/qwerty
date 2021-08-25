@@ -120,4 +120,4 @@ We ensure the high quality of our products and provide you with full support. Al
 
 ## License
 
-© 2020, LOVATA Group, LLC under [Regular](https://octobercms.com/help/license/regular) or [Extended](https://octobercms.com/help/license/extended) marketplace license.
+© 2021, Atr1n. Maxim Ogurov
